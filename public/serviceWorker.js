@@ -1,5 +1,5 @@
 const cacheName = "cache-version";
-const urlToCache = ["index.html","offline.html", "favicon.png","account/orders"];
+const urlToCache = ["index.html","offline.html", "favicon.png"];
 
 //install
 
@@ -26,7 +26,7 @@ self.addEventListener("fetch",(e) => {
     )
 })
 
-self.addEventListener("install",(e) => {
+self.addEventListener("activate",(e) => {
     const cacheLists = [];
     cacheLists.push(cacheName);
     e.waitUntil(

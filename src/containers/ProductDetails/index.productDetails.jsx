@@ -61,7 +61,7 @@ const ProductDetailPage = (props) => {
                         <div className="picture-preview">
                             <div className="preview">
                                 {/* <img src={generateImgUrl(product.productDetails.productPicture[0].img)} /> */}
-                                <img src={generateImgUrl(previewImg)} />
+                                <img src={generateImgUrl(previewImg)} alt={"current-product"} />
                             </div>
                         </div>
                     </div>

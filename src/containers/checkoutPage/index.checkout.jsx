@@ -117,7 +117,7 @@ const CheckoutPage = (props) => {
     }
     const onAddressSubmit = (addr) => {
         setSelectedAddress(addr);
-        console.log(addr)
+      
         setConfirmAddress(true);
         setOrderSummery(true);
     }
@@ -156,7 +156,7 @@ const CheckoutPage = (props) => {
             payablePrice : cart.cartItems[key].price,
             purchasedQuantity: cart.cartItems[key].qty
         }));
-console.log(items)
+
         const payload = {
             addressId: selectedAddress._id,
             totalAmt,
@@ -165,6 +165,7 @@ console.log(items)
             paymentType: paymentType
         }
         dispatch(addOrder(payload));
+        props.history.push("/order")
     }
     const submitPaymentType = (e) => {
         setPaymentType(e.currentTarget.dataset.val)

@@ -20,7 +20,7 @@ const CartItem = (props) => {
         <div className="cart">
             <div className="cart-body">
                 <div className="cart-img">
-                    <img src={generateImgUrl(img)} />
+                    <img src={generateImgUrl(img)} alt="image"/>
                 </div>
                 <div className="cart-details">
                     <div>

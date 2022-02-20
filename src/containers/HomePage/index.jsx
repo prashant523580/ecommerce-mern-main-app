@@ -83,11 +83,13 @@ function HomePage(props) {
 
                     }
 
-                    <CarouselItem><img src={page[5]} /></CarouselItem>
-                    <CarouselItem><img src={page[0]} /></CarouselItem>
-                    <CarouselItem><img src={page[2]} /></CarouselItem>
-                    <CarouselItem><img src={page[6]} /></CarouselItem>
-                    <CarouselItem><img src={page[8]} /></CarouselItem>
+                    <CarouselItem><img src={page[1]} alt="carousel1" /></CarouselItem>
+                    <CarouselItem><img src={page[0]} alt="carousel1"/></CarouselItem>
+                    <CarouselItem><img src={page[2]} alt="carousel1"  /></CarouselItem>
+                    <CarouselItem><img src={page[6]} alt="carousel1"  /></CarouselItem>
+                    <CarouselItem><img src={page[8]} alt="carousel1"  /></CarouselItem>
+                    <CarouselItem><img src={page[5]} alt="carousel1"  /></CarouselItem>
+                    <CarouselItem><img src={page[7]} alt="carousel1"  /></CarouselItem>
 
                 </Carousel>
                 {

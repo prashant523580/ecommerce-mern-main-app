@@ -15,7 +15,7 @@ const AddressForm = (props) => {
         addressType:initialData ? initialData.addressType: ""
     });
     const [id,setId] = useState(initialData ? initialData._id :  "");
-    console.log(id);
+   
     const [submitFlag,setSubmitFlag] = useState(false);
     const auth = useSelector(state => state.auth);
     const inputEvent = (e) =>{
@@ -42,7 +42,7 @@ const AddressForm = (props) => {
             }else{
                 _address = auth.address.slice(auth.address.length-1)[0];
             }
-            console.log(_address);
+         
             props.onSubmitForm(_address )
         }
     },[auth.address])
@@ -57,7 +57,7 @@ const AddressForm = (props) => {
             if(id){
                 payload.address._id = id
             }
-            console.log(payload);
+     
             dispatch(addAddress(payload))
             setSubmitFlag(true)
     }

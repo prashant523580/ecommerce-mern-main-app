@@ -35,7 +35,7 @@ const OrderPage = (props) =>{
                         >
                             <Link title="click to view order details" to={`/orderDetails/${ord._id}`}>
                                 <div className="img-container">
-                                    <img src={generateImgUrl(ord.items[0].productId.productPicture[0].img)} alt="" />    
+                                    <img src={generateImgUrl(ord.items[0].productId.productPicture[0].img)} alt={ord[0].productId.name} />    
                                 </div> 
                                 <div className="order-details">
                                     

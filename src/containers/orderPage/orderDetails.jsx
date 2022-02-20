@@ -86,7 +86,7 @@ const OrderDetails = (props) => {
                                                 <div className="image-container">
                                                     <div className="img">
 
-                                                    <img src={generateImgUrl(item.productId.productPicture[0].img)} alt="" />
+                                                    <img src={generateImgUrl(item.productId.productPicture[0].img)} alt={item.productId.name} />
                                                     </div>
                                                 </div>
                                                 <div className="item-details">

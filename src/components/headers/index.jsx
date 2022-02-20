@@ -197,7 +197,7 @@ const Header = () => {
                                         <FacebookOutlinedIcon />
                                     </button>
                                     <button >
-                                        <img width={'30px'} height={"30px"} src={googleIcon}/>
+                                        <img width={'30px'} height={"30px"} alt="icon" src={googleIcon}/>
                                     </button>
                                 </div>
                                 <div>
@@ -307,7 +307,7 @@ const Header = () => {
             </div>
 
             <div className="head cart-page">
-                <a href="/cart"> <div> {Object.keys(cart.cartItems).length}</div> <ShoppingCartOutlinedIcon /></a>
+                <NavLink to="/cart"> <div> {Object.keys(cart.cartItems).length}</div> <ShoppingCartOutlinedIcon /></NavLink>
             </div>
             {error ? showErrorModal() : null}
             {modal()}

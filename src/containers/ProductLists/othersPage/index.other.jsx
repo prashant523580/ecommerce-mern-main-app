@@ -33,7 +33,7 @@ const OtherStore = (props) => {
                                     <Link to={`/${product.slug}/${product._id}/p`} key={ind} className="product" >
 
                                         <div className="product-img">
-                                            <img src={`${generateImgUrl(product.productPicture[0].img)}`} alt="" />
+                                            <img src={`${generateImgUrl(product.productPicture[0].img)}`} alt={product.name} />
                                         </div>
 
                                         <div className="product-details">
