@@ -1,0 +1,95 @@
+*{
+    transition: all .2s ease;
+
+}
+nav{
+    background-color: var(--bg-green);
+    z-index: 999;
+}
+nav  ul{
+    list-style: none;
+
+}
+nav > ul{
+    position: relative;
+    display: flex;
+    color: white;
+}
+nav > ul > li {
+    cursor: pointer;
+
+}
+nav ul > li > span {
+    display: block;
+    margin: .5rem;
+    /* background-color: violet; */
+}
+nav ul > li:hover{
+    background: white;
+    color: black;
+} 
+nav > ul > li > ul{
+    position: absolute;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 50px 4px rgba(0,0,0,0.6);
+    display: none;
+    background:var(--light);
+    padding: 10px;
+}
+nav > ul > li:hover ul{
+    display: block;
+}
+nav > ul > li > ul > li{
+    margin: 0 20px;
+    float: left;
+}
+nav > ul > li > ul > li{
+}
+nav > ul > li > ul > li > a {
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: capitalize;
+    color:var(--primary);
+}
+
+nav > ul > li > ul > li > ul >li {
+    /* text-align: center; */
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+nav > ul > li > ul > li > ul >li  a{
+    text-decoration: none;
+    color: var(--dark);
+    text-transform: capitalize;
+    transition: all .3s ease;
+    position: relative;
+    display: inline-flex;
+    text-align: center;
+    transition: left ease .3s ease;
+}
+
+nav > ul > li > ul > li > ul >li  a:hover{
+    color: var(--bg-green);
+}
+nav > ul > li > ul > li > ul >li  a::before{
+    content:"\00bb";
+    position: absolute;
+    left: -30px;
+    top: -2.5px;
+    opacity: 0;
+    transition: all .2s ease;
+    text-shadow: 0 0 6px rgba(0,0,0,0.6);
+}
+nav > ul  li  ul  li ul li:hover a::before{
+    left: -13px;
+    opacity: 1;
+    color: var(--success);
+}
+nav ul > li > ul > li  >ul  li:hover a{
+    /* text-decoration: none; */
+    /* padding-left: 5px; */
+    /* left: 20px; */
+    transform: translateX(10px);
+}   

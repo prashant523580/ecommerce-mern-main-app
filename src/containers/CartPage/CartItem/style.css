@@ -1,0 +1,72 @@
+.cart {
+/* width: 120vmin; */
+width: 100%;
+margin: .6rem 0;
+background-color: var(--bg-green);
+padding: .7vmin;
+color: white;
+border-radius: .2rem;
+}
+.cart h4{
+    text-transform: capitalize;
+    font-size: 2.9vmin;
+}
+.cart-body{
+    font-size: 3vmin;
+    display: flex;align-items:flex-start;
+    justify-content: center;
+
+}
+.cart-body p{
+    font-size: 1.7vmin;
+}
+.cart-body .cart-img{
+    width: 16vmin;
+    height: 17vmin;
+    background-color: black;
+    border-radius: .4rem;
+    overflow: hidden;
+}
+.cart-body .cart-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart-body .cart-details{
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+padding: .5vmin;
+width: 100%;
+}
+.cart-body .cart-details .delivery{
+    font-size: 2.3vmin;
+}
+.cart-footer{
+/* margin: .9vmin 0; */
+padding: .6vmin;
+/* font-size: 2vmin; */
+}
+
+.cart-footer .quantity-control{
+display: flex;
+}
+.cart-footer .quantity-control .quantity{
+    width: 8vmin;
+    text-align: center;
+    padding: .3vmin .3vmin;
+}
+.cart-footer .quantity-control button{
+    outline: 0;
+    border: 0;
+    padding: .9vmin 1.29vmin;
+}
+button.remove-btn{
+    background-color: var(--danger);
+    color: white;
+    text-transform: capitalize;
+}
+button.remove-btn svg{
+    font-size: 2vmin;
+}

@@ -1,0 +1,7 @@
+footer{
+    margin-top: auto;
+    background: var(--bg-green);
+    padding: 20px ;
+    color: white;
+    text-transform: capitalize;
+  }

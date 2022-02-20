@@ -1,0 +1,23 @@
+@media screen and (max-width:800px) {
+    button{
+        font-size: 1.9vmin;
+        padding: .4rem .6rem;
+    }
+    .product-details-container .product-img-preview{
+        height: 250px;
+    }
+    .product-details-container .product-img-preview .images{
+    
+      
+    }
+    
+    .product-details-container .product-img-preview .images .vertical-img-stack{
+        width: 30px;
+      
+    }
+    .product-details-container .product-img-preview .images .vertical-img-stack .thumbnail{
+        width: 20px;
+        height: 30px;
+        margin: .3rem auto;
+    }
+}

@@ -1,0 +1,161 @@
+.checkout-container{
+ width: 50%;
+ padding: 5px;
+}
+.checkout-container .checkout{
+    background-color: var(--light);
+    margin: .3rem 0;
+    border-radius: .2rem;
+    overflow: hidden;
+}
+.checkout-container .checkout .checkout-header{
+    background-color: var(--success);
+    display: flex;
+    justify-content: space-between;
+    padding: .3rem .6rem;
+    color: white;
+}
+.checkout-container .checkout .checkout-header.active{
+    background-color: var(--bg-green);
+}
+.checkout-header .step-number{
+    width: 20px;
+    height: 20px;
+    color: var(--bg-green);
+    text-align: center;
+    background-color: var(--light);
+}
+.checkout-header .title{
+    text-transform: capitalize;
+}
+.checkout-container .checkout .checkout-body{
+    padding: 10px;
+    box-shadow: inset 0 0 10px 0px rgba(0,0,0,0.7);
+    width: 100%;
+}
+
+form{
+
+}
+.form .form-group .address-type,
+.checkout .checkout-body > .form .form-group{
+    display: flex;
+    margin: .3rem;
+    flex-wrap: wrap;
+}
+.form .form-group .form-control{
+    width: 40%;
+    margin: .3rem .3rem;
+    outline: 0;
+    border: 0;
+    border-bottom: 1px solid var(--bg-green);
+
+}
+.form .form-group .address-type {
+    display: flex;
+    align-items: center;
+}
+.form .form-group label{
+    color: black;
+}
+.form .form-group .address-type .form-group{
+    display: flex;
+    align-items: center;
+    padding:0rem .4rem;
+}
+.form .form-group .address-type .form-group label{
+    color: var(--lightblue);
+    margin: 0 .2rem;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.address-container{
+    /* display: flex; */
+}
+
+.address{
+   
+    padding: 3px;
+    /* border-radius: .3rem; */
+    /* box-shadow: 0 0 3px 0 black; */
+}
+
+.address-container .address-body .address label{
+    cursor: pointer;
+    width: 100%;
+    padding: .3rem;
+}
+.address label:hover ~ .address{
+    border-bottom: 2px solid black;
+    /* background-color:  var(--bg-green); */
+    color: var(--light);
+    /* box-shadow: 0 0 4px 0 black; */
+}
+.address .buttons{
+    /* float: right; */
+    display: flex;
+    margin: .3rem 0;
+}
+.address .buttons .button{
+    background-color: var(--lightblue);
+    color: var(--light);
+    padding: 6px 8px;
+    margin: 0rem .3rem;
+    text-transform: capitalize;
+}
+.address .buttons .button:last-child{
+    background-color: var(--success);
+}
+.confirm:not(.confirm .confirm-mail){
+    text-transform: capitalize;
+}
+.confirm .confirm-mail{
+    text-transform: lowercase;
+    color: var(--lightblue);
+    text-decoration: underline;
+}
+.confirm-btn{
+    background-color: var(--bg-green);
+    color: var(--light);
+    padding: 6px 8px;
+    margin: .3rem 0;
+    text-transform: capitalize;
+    float: right;
+    transition: all ,2s ease;
+}
+.confirm-btn:active .confirm-btn::before{
+    content: ">";
+}
+.payment-option{
+    text-align: center;
+    padding: .3rem;
+    border-radius: .3rem;
+}
+.payment-option::before,
+.payment-option::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+.options {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+.option{
+    width: 200px;
+    height: 60px;
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 10px 10px;
+    margin: .3rem 0;
+}
+.option:hover{
+    box-shadow: 0 0 3px 0 rgba(0,0,0,0.7);
+}
+.checkout .active{
+    box-shadow: 0px 0px 100px 0px black;
+}
