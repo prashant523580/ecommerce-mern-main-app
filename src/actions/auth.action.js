@@ -15,8 +15,8 @@ export const login = (user) => {
             if(res.status === 200){
                 const {user,token} = await res.data;
                 console.log(user)
-                localStorage.setItem('token',token);
-                localStorage.setItem("user", JSON.stringify(user))
+                localStorage.setItem('token-',token);
+                localStorage.setItem("user-", JSON.stringify(user))
                 dispatch({
                     type: authConstants.LOGIN_SUCCESS,
                     payload:{
@@ -60,32 +60,32 @@ console.log(user)
             ...user
         })
         console.log(res)
-        // if(res.status === 201){
-        //     const {message} = res.data;
-        //     // localStorage.setItem('token',token);
-        //     localStorage.setItem("user", JSON.stringify(user))
-        //     dispatch({
-        //         type: authConstants.LOGIN_SUCCESS,
-        //         payload:{
-        //             message,
-        //             user
-        //         }
-        //     });
-        // }else{
-        //     if(res.status === 400){
-        //         dispatch({
-        //             type:authConstants.LOGIN_FAILURE,
-        //             payload:{error: res.data.error}
-        //         })
-        //     }
-        // }
+        if(res.status === 201){
+            const {message,token} = res.data;
+            localStorage.setItem('token-',token);
+            localStorage.setItem("user-", JSON.stringify(user))
+            dispatch({
+                type: authConstants.LOGIN_SUCCESS,
+                payload:{
+                    message,
+                    user
+                }
+            });
+        }else{
+            if(res.status === 400){
+                dispatch({
+                    type:authConstants.LOGIN_FAILURE,
+                    payload:{error: res.data.error}
+                })
+            }
+        }
     }
 }
 export const isUserLoggedIn =()=> {
     return async dispatch => {
-        const token = localStorage.getItem("token");
+        const token = localStorage.getItem("token-");
         if(token){
-            let user = localStorage.getItem("user");
+            let user = localStorage.getItem("user-");
             if(user.length > 0){
 
 
@@ -190,7 +190,7 @@ export const getOrders = () => {
         dispatch({type: authConstants.GET_ORDER_REQUEST});
 
         let res = await axios.get("/user/getOrders");
-        console.log(res)
+        // console.log(res)
         if(res.status === 200) {
             const {order} = res.data;
             dispatch({

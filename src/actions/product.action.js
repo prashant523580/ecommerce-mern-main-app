@@ -47,7 +47,6 @@ export const getProductPage = (payload) => {
             type: productsConstants.GET_PRODUCT_PAGE_REQUEST
         });
         const res = await axios.get(`/page/${cid}/${type}`);
-        console.log(res)
         if (res.status === 200) {
             dispatch({
                 type: productsConstants.GET_PRODUCT_PAGE_SUCCESS,

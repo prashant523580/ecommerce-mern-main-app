@@ -16,7 +16,10 @@ const OrderPage = (props) =>{
     //     setOrders(auth.orders);
    
     // },[auth.orders]);
-    // console.log(orders)
+    if(auth.orders.length > 0){
+
+        console.log(auth.orders)
+    }
     return(
         <>
             <div className="page-container">
@@ -33,20 +36,25 @@ const OrderPage = (props) =>{
                             }
                         }
                         >
-                            <Link title="click to view order details" to={`/orderDetails/${ord._id}`}>
+                            {
+                               ord.items.length > 0 && ord.items.map((item,ind) =>
+                                
+                            <Link key={ind} title="click to view order details" to={`/orderDetails/${ord._id}`}>
                                 <div className="img-container">
-                                    <img src={generateImgUrl(ord.items[0].productId.productPicture[0].img)} alt={ord[0].productId.name} />    
+                                    <img src={item && generateImgUrl(item.productId.productPicture[0].img)} alt={item.productId.name} />    
                                 </div> 
                                 <div className="order-details">
                                     
                                     <div className="product-name"> <p>
-                                        {ord.items[0].productId.name.split(" ",3)}
+                                        {item.productId.name.split(" ",3)}
                                         </p>
 
                                         </div>
                                     <div className="product-price"> price{ord.items[0].payablePrice}</div>
                                 </div>
                             </Link>
+                                )
+                        }
                         </Card>
                     )}
                 </div>
