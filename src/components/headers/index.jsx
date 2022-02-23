@@ -321,7 +321,7 @@ const Header = (props) => {
         }
     }
     const submitSearchProduct = (e) => {
-        setCurrProduct('')
+        // setCurrProduct('')
         
                 
     }
