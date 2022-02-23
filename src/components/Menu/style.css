@@ -22,7 +22,7 @@ nav > ul > li {
 nav ul > li > span {
     display: block;
     margin: .5vmin;
-    font-size: 4vmin;
+    font-size: 2.8vmin;
     /* background-color: violet; */
 }
 nav ul > li:hover{
@@ -36,7 +36,7 @@ nav > ul > li > ul{
     box-shadow: 0 0 20px 4px rgba(0, 0, 0, 0.425);
     display: none;
     background:var(--light);
-    padding: 1vmin .3vmin;
+    padding: .8vmin .3vmin;
 }
 nav > ul > li:hover ul{
     display: block;

@@ -56,6 +56,7 @@
 }
 .page-container .row  .order-details  .order-detail div{
     text-transform: capitalize;
+    font-size: 2.8vmin;
 }
 .page-container .row  .order-details  .order-actions.buttons{
     /* box-shadow: 0 0 10px 0 var(--dark); */
@@ -79,7 +80,7 @@
     box-shadow: 0 0 10px 0 rgba(14, 7, 7, 0.315);
     margin: .6rem auto;
     border-radius: .4rem;
-    height: 220px;
+    height: 40vmin;
     background-color: var(--light);
     display: flex;
     flex-direction: column;
@@ -97,16 +98,26 @@
     padding: 0 1vmin;
     /* box-shadow: inset 0 0 10px 0 black; */
 }
+.page-container .row  .order-details .items .details .item-details div.product-name{
+    font-size: 3vmin;
+}
+.page-container .row  .order-details .items .details .item-details div.quantity{
+    font-size: 2.8vmin;
+}
+.page-container .row  .order-details .items .details .item-details div.product-price{
+    font-size: 2.8vmin;
+}
+
 .page-container .row  .order-details .items .item-track{
     display: flex;
     align-items: center;
     width: 80%;
     margin: auto auto;
     position: relative;
-    font-size: 2.4vmin;
+    /* font-size: 2vmin; */
     /* top: %; */
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-15px);
     /* height: 5px; */
     /* height: auto; */
     /* align-items: center; */
@@ -147,9 +158,18 @@
 }
 .page-container .row  .order-details .items .item-track .status-container .order-info{
     margin-top: .9vmin;
+    font-size: 2.5vmin;
 }
+.page-container .row  .order-details .items .item-track .status-container .order-info .date{
+    font-size: 2vmin;
+    background-color: var(--bg-green);
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+}
+
 .page-container .row  .order-details .items .delivery{
-    font-size: 2.2vmin;
+    font-size: 3vmin;
 }
 .page-container .row  .order-details .items .delivery .delivery-date{
     text-decoration: underline;

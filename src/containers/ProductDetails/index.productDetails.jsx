@@ -10,7 +10,7 @@ const ProductDetailPage = (props) => {
     const product = useSelector(state => state.product);
     const {productDetails}= product;
     const [previewImg,setPreviewImg] = useState();
-    const cart = useSelector(state => state.cart);
+    // const cart = useSelector(state => state.cart);
     useEffect(() => {
         const { productId } = props.match.params;
 

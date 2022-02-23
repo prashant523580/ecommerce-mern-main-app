@@ -1,3 +1,4 @@
+
 const cacheName = "cache-version";
 const urlToCache = ["index.html","offline.html", "favicon.png"];
 
@@ -17,13 +18,15 @@ self.addEventListener("install",(e) => {
 
 //fetch
 self.addEventListener("fetch",(e) => {
+    if (!(evt.request.url.indexOf('http') === 0)) return; 
+
     e.respondWith(
         caches.match(e.request)
         .then((res) => {
             if(res){
                 return res
             }
-                return fetch(e.request)
+                return res || fetch(e.request)
                 .then((res) => {
                     //check if we recieved a valid response
                     if(!res || res.status !== 200 || res.type !== "basic"){
@@ -36,10 +39,9 @@ self.addEventListener("fetch",(e) => {
                     var resToCache =  res.clone();
                     caches.open(cacheName)
                     .then((cache) => {
-                        // console.log(cache)
-                        cache.put(e.request , resToCache);
+                        cache.put(e.request.url, resToCache);
+                        return res
                     })
-                    return res
                 })
                 .catch(() => caches.match("offline.html"))
         })
@@ -70,3 +72,45 @@ self.addEventListener("sync",(e) => {
         )
     }
 })
+
+
+
+
+// fetch event
+// self.addEventListener('fetch', evt => {
+    // check if request is made by chrome extensions or web page
+    // if request is made for web page url must contains http.
+    // if (!(evt.request.url.indexOf('http') === 0)) return; 
+    // skip the request. if request is not made with http protocol
+  
+//     evt.respondWith(
+//       caches
+//         .match(evt.request)
+//         .then(
+//           cacheRes =>
+//             cacheRes ||
+//             fetch(evt.request).then(fetchRes =>
+//               caches.open(dynamicNames).then(cache => {
+//                 cache.put(evt.request.url, fetchRes.clone());
+//                 // check cached items size
+//                 limitCacheSize(dynamicNames, 75);
+//                 return fetchRes;
+//               })
+//             )
+//         )
+//         .catch(() => caches.match('/fallback'))
+//     );
+//   });
+  
+//   // cache size limit function
+//   const limitCacheSize = (name, size) => {
+//     caches.open(cacheName).then(cache => {
+//       cache.keys().then(keys => {
+//         if (keys.length > size) {
+//           cache.delete(keys[0]).then(limitCacheSize(name, size));
+//         }
+//       });
+//     });
+//   };
+  
+  

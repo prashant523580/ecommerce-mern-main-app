@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import SearchIcon from '@mui/icons-material/Search';
+// import SearchIcon from '@mui/icons-material/Search';
 import "./style.css";
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { getCartItems, login, signout, UserSignup } from "../../actions"
+import { getAllProduct, getCartItems, login, signout, UserSignup } from "../../actions"
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
 import { Dropdown, Modal } from './nav-header/index.nav';
 import { authConstants } from '../../actions/constant';
 import loginImg from "../../img/Login-illustration.svg";
 import googleIcon from "../../img/IOS_Google_icon.png";
-const Header = () => {
+const Header = (props) => {
     const [loginModal, setLoginModal] = useState(false);
     const [signupModal, setSignupModal] = useState(false);
     const [errorModal, setErrorModal] = useState(false);
+    // const [currProduct,setCurrProduct] = useState('');
+    // const [searchedItem,setSearchedItem] = useState();
     const [error, setError] = useState('');
     const [user, setUser] = useState({
         name: "",
@@ -35,9 +37,14 @@ const Header = () => {
     })
     const auth = useSelector(state => state.auth);
     const current_user = useSelector(state => state.user);
+    const products = useSelector(state => state.product);
+    
     const cart = useSelector(state => state.cart);
     const dispatch = useDispatch();
-
+    useEffect(() => {
+        dispatch(getAllProduct());
+    },[])
+    console.log(products)
     useEffect(() => {
         setError(auth.error || current_user.error);
         setErrorModal(true);
@@ -290,6 +297,34 @@ const Header = () => {
             />
         )
     }
+    
+    //search function
+    
+    const searchProduct = (e) =>{
+        // setCurrProduct(e.target.value)
+        // console.log(e.target.value)
+        // console.log(currProduct)
+    
+        let id ,slug;
+        // console.log(e.target.list.children)
+        for (let i of e.target.list.children){
+            // console.log(i.value)
+            if(i.value === e.target.value){
+                console.log(i.dataset.id)
+                id = i.dataset.id;
+                slug = i.dataset.slug
+            }
+        }
+        if(id && slug !== undefined){
+
+            window.location.href = `/${slug}/${id}/p`;
+        }
+    }
+    const submitSearchProduct = (e) => {
+        setCurrProduct('')
+        
+                
+    }
     return (
         <div className='main-header'>
             <div className="head logo">
@@ -297,8 +332,22 @@ const Header = () => {
             </div>
             <div className="head location"> <LocationOnIcon/>Nepal</div>
             <div className="head search-box">
-                <input type="text" className='search' />
-                <button className='btn'><SearchIcon /></button>
+                    <div onClick={submitSearchProduct}>
+                <input type="text" className='search'  onChange={searchProduct} list='product-list'/>
+                <datalist id={'product-list'}>
+                    {
+                        products.products.map((product,ind) => {
+                            return(
+                                <option key={ind} data-id={product._id} data-slug={product.slug} value={product.name}>
+                                    
+                                </option>
+                            )
+                        })
+                    }
+                </datalist>
+                {/* <button className='btn'><SearchIcon /></button> */}
+
+                            </div>
             </div>
             <div className="head account">
                 {

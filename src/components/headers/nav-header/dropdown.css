@@ -8,7 +8,7 @@
 }
 .dropdown .dropdown-btn  {
     cursor: pointer;
-    padding: .3rem .6rem;
+    padding: .3vmin .6vmin;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -19,7 +19,7 @@
 .active-lightblue{
     background-color: var(--lightblue);
     color: white;
-    padding: .3rem .6rem;
+    padding: .3vmin .6vmin;
     cursor: pointer;
 }
 .dropdown .dropdown-btn:active  {
@@ -44,11 +44,11 @@
     overflow: hidden;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
-    min-width: 200px;
-    padding: .6rem;
+    min-width: 40vmin;
+    padding: .6vmin;
     /* place-items: center; */
     background-color: var(--light);
-    box-shadow: 0 15px 30px 10px black;
+    box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.418);
     display: grid;
     /* width: 100%; */
 }

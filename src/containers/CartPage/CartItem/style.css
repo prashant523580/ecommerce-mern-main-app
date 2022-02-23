@@ -9,10 +9,10 @@ border-radius: .2rem;
 }
 .cart h4{
     text-transform: capitalize;
-    font-size: 2.9vmin;
+    font-size: 2vmin;
 }
 .cart-body{
-    font-size: 3vmin;
+    /* font-size: 3vmin; */
     display: flex;align-items:flex-start;
     justify-content: center;
 
@@ -41,7 +41,7 @@ padding: .5vmin;
 width: 100%;
 }
 .cart-body .cart-details .delivery{
-    font-size: 2.3vmin;
+    font-size: 2vmin;
 }
 .cart-footer{
 /* margin: .9vmin 0; */

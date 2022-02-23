@@ -6,7 +6,7 @@ import   getParam from "../../utils/getParam";
 import ProductPage from "./ProductPage";
 import OtherStore from "./othersPage/index.other";
 const ProductLists = (props) => {
-    const params = getParam()
+    // const params = getParam()
     const renderProduct = () => {
         const params  = getParam(props.location.search);
         let content = null;

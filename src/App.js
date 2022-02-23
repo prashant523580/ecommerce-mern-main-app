@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import logo from './logo.svg';
 import { useDispatch, useSelector } from "react-redux";
 import './App.css';
 import { isUserLoggedIn, updateCart } from "./actions"

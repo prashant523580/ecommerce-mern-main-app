@@ -15,6 +15,7 @@
   z-index: 99999999;
   top: 0;
   left: 0;
+  background-color: rgba(7, 0, 0, 0.37);
 }
 .modal {
   position: absolute;
@@ -22,7 +23,7 @@
   left: 50%;
   /* transform: translate(-50%,-50%); */
   /* width: 100px; */
-    width: 80vmin;
+    width: 100vmin;
   /* height: 60vmin; */
   margin: auto;
   /* padding: .5rem .3rem; */
@@ -121,6 +122,7 @@
   cursor: pointer;
   text-align: center;
   color: var(--light);
+  font-size: 3vmin;
 }
 .modal .modal-body .content p span {
   cursor: pointer;
@@ -129,7 +131,7 @@
 .modal,
 .modal-body h4 {
   color: rgb(57, 44, 44);
-  font-size: 2.9vmin;
+  font-size: 3.5vmin;
 }
 
 .modal form {
@@ -166,14 +168,19 @@
   display: flex;
 }
 form > .form-group .social-media  div  button {
-  padding: 6px;
-  margin: 4px 4px;
+  padding: .1vmin;
+  margin:  2px;
   width: 50%;
   text-transform: capitalize;
   border-radius: .3rem;
-  background-color: rgb(171, 195, 195);
+  /* background-color: inherit; */
   color: rgb(23, 83, 120);
   /* background-color: black; */
+}
+form > .form-group .social-media div button svg,
+form > .form-group .social-media div button img{
+  width: 5vmin;
+  height: 5vmin;
 }
 .close {
   color: rgb(7, 0, 0);
@@ -218,13 +225,13 @@ form .form-group .input-control:focus {
   text-align: center;
   text-transform: capitalize;
   color: white;
-  padding: 2.2vmin 1vmin;
+  padding: 1.2vmin 1vmin;
   outline: 0;
   /* width: 23vmin; */
   margin: 0 .2rem;
   /* place-self: center; */
   border: 0;
-  font-size: 2.7vmin;
+  font-size: 3vmin;
   width: 50%;
   cursor: pointer;
 }

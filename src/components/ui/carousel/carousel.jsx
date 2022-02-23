@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import "./carousel.css";
 import {useSwipeable} from "react-swipeable";
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 export const CarouselItem = ({ children, width }) => {
     return (
         <div className="slide" style={{ width: width }}>
