@@ -123,7 +123,8 @@ export default (state = initState, action) => {
                 ...state,
                 loading: false,
                 error: action.payload.error
-            }
+            };
+            break;
         case authConstants.GET_ORDER_REQUEST:
             state = {
                 ...state,
@@ -143,7 +144,8 @@ export default (state = initState, action) => {
                 ...state,
                 loading: false,
                 error: action.payload.error
-            }
+            };
+            break;
         case authConstants.GET_ORDER_DETAILS_REQUEST:
             state = {
                 ...state,
@@ -163,6 +165,7 @@ export default (state = initState, action) => {
                 loading: false,
                 error: action.payload.error
             }
+            break;
     }
     return state;
 }

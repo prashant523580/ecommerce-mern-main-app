@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart, deleteCartItem, getCartItems, isUserLoggedIn } from "../../actions";
-import Card from "../../components/ui/card/index.card";
+import { addToCart, deleteCartItem, getCartItems } from "../../actions";
+// import Card from "../../components/ui/card/index.card";
 import CartItem from "./CartItem/index.cartitem";
 import "./cart.css"
 const CartPage = (props) => {

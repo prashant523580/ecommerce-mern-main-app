@@ -9,7 +9,6 @@ import { getCartItems, login, signout, UserSignup } from "../../actions"
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
 import { Dropdown, Modal } from './nav-header/index.nav';
-import { getNativeSelectUtilityClasses } from '@mui/material';
 import { authConstants } from '../../actions/constant';
 import loginImg from "../../img/Login-illustration.svg";
 import googleIcon from "../../img/IOS_Google_icon.png";
@@ -51,16 +50,20 @@ const Header = () => {
                     error: ""
                 }
             })
-            setErrorMessage({
-                fullnameError: "",
-                phoneError: "",
-                emailError: "",
-                passwordError: "",
-                usernameError: ""
-            })
+            return () => {
+
+                setErrorMessage({
+                    fullnameError: "",
+                    phoneError: "",
+                    emailError: "",
+                    passwordError: "",
+                    usernameError: ""
+                })
+            }   
         }, 3000);
     }, [auth.error, current_user.error]);
     useEffect(() => {
+        dispatch(getCartItems());
     }, [auth.authenticate]);
     const showErrorModal = () => {
 

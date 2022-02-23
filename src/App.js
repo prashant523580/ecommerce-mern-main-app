@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import logo from './logo.svg';
 import { useDispatch, useSelector } from "react-redux";
 import './App.css';
-import { getAllCategory, getAllProduct, getCartItems, getInitialData, isUserLoggedIn, updateCart } from "./actions"
+import { isUserLoggedIn, updateCart } from "./actions"
 import HomePage from "./containers/HomePage/index";
 import Header from "./components/headers/index";
 import Menu from "./components/Menu/index";
@@ -18,11 +18,7 @@ function App() {
   const dispatch = useDispatch()
   const auth = useSelector(state => state.auth);
   // const category = useSelector(state => state.category);
-  useEffect(() => {
-    dispatch(getAllCategory());
-    dispatch(getAllProduct());
-    // dispatch(getInitialData());  
-  },[])
+  
 
   useEffect(()=> {
     if(!auth.authenticate)(
@@ -44,8 +40,8 @@ function App() {
           <Route exact path="/cart" component={CartPage}/>
           <Route exact path="/checkout" component={CheckoutPage}/>
           <Route exact path="/account/orders" component={OrderPage}/>
-          <Route exact path="/orderDetails/:oId" component={OrderDetails}/>
           <Route exact path={"/:productSlug/:productId/p"} component={ProductDetailPage}/>
+          <Route exact path="/orderDetails/:oId" component={OrderDetails}/>
           <Route exact  path={"/:slug"} component={ProductLists} />
         
       </Switch>

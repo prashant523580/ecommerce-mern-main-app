@@ -1,60 +1,75 @@
+import React, { useEffect,useState } from "react";
 import { Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrders } from "../../actions";
 import Card from "../../components/ui/card/index.card";
 import { generateImgUrl } from "../../urlConfig";
 import "./style.css"
-const OrderPage = (props) =>{
+const OrderPage = (props) => {
     const auth = useSelector(state => state.auth);
-    const [orders,setOrders] = useState([]);
     const dispatch = useDispatch();
+    const  [order,setOrder] = useState(auth.orders);
     useEffect(() => {
         dispatch(getOrders());
-    },[])
-    // useEffect(() => {
-    //     setOrders(auth.orders);
-   
-    // },[auth.orders]);
-    if(auth.orders.length > 0){
+    },[]);
+    useEffect(() => {
 
-        console.log(auth.orders)
-    }
-    return(
+        setOrder(auth.orders)
+    },[auth.orders])
+    
+    
+    return (
         <>
             <div className="page-container">
                 <div className="row orders">
-                    
-                    {auth.orders.length > 0 && auth.orders.map((ord,ind) => 
-                        <Card
-                         key={ind}
-                        header={
-                            {
 
-                                leftHeader:"Payment",
-                                rightHeader:ord.paymentStatus
+                    {order.map((ord, ind) =>
+                        <Card
+                            key={ind}
+                            header={
+                                {
+
+                                    leftHeader: `Payment status:${ord.paymentStatus}`,
+                                    rightHeader: `order ID:${ord._id}`
+                                }
                             }
-                        }
                         >
                             {
-                               ord.items.length > 0 && ord.items.map((item,ind) =>
-                                
-                            <Link key={ind} title="click to view order details" to={`/orderDetails/${ord._id}`}>
-                                <div className="img-container">
-                                    <img src={item && generateImgUrl(item.productId.productPicture[0].img)} alt={item.productId.name} />    
-                                </div> 
-                                <div className="order-details">
-                                    
-                                    <div className="product-name"> <p>
-                                        {item.productId.name.split(" ",3)}
-                                        </p>
 
+                           ord.items.map((item, ind) => {
+                               console.log(item)
+                                    return (
+                                        // <NavLink key={ind} title="click to view order details" to={`/orderDetails/${ord._id}`}>
+                                        //     <div className="img-container">
+                                        //         <img src={generateImgUrl(item.productId.productPicture[0].img)} alt={item.productId.name} />
+                                        //     </div>
+                                        //     <div className="order-details">
+
+                                        //         <div className="product-name"> <p>
+                                        //             {item.productId.name.split(" ", 3)}
+                                        //         </p>
+
+                                        //         </div>
+                                        //         <div className="product-price">price {item.payablePrice}</div>
+                                        //     </div>
+                                        // </NavLink>
+                                        <Link key={ind} title="click to view order details" to={`/orderDetails/${ord._id}`}>
+
+                                        <div className="product">
+                                        <div className=" product-img">
+                    
+                                        <img src={generateImgUrl(item.productId.productPicture[0].img)} alt={item.productId.name} />
                                         </div>
-                                    <div className="product-price"> price{ord.items[0].payablePrice}</div>
-                                </div>
-                            </Link>
+                                        <div className="product-details">
+                                            <div className='product-name'>{item.productId.name.split(' ',3)}</div>
+                                            <div className='product-price'>Rs.{item.payablePrice}</div>
+                                        </div>
+                                    </div>
+                                        </Link>
+                                    )
+                                }
                                 )
-                        }
+                            }
                         </Card>
                     )}
                 </div>

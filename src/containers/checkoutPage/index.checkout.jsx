@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCartItems } from "../../actions";
 import { login, getAddress,addOrder } from "../../actions/auth.action";
-import Card from "../../components/ui/card/index.card";
+// import Card from "../../components/ui/card/index.card";
 import CartPage from "../CartPage/index.cart";
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import AddressForm from "./AddressForm";
@@ -82,7 +82,7 @@ const CheckoutPage = (props) => {
     const [orderSummery, setOrderSummery] = useState(false);
     const [orderConfirmation, setOrderConfirmation] = useState(false);
     const [paymentOption,setPaymentOption] = useState(false);
-    const [confirmOrder, setConfirmOrder] = useState(false);
+    // const [confirmOrder, setConfirmOrder] = useState(false);
     const [paymentBtn,setPaymentBtn] = useState();
     const[paymentType,setPaymentType] = useState();
 
@@ -165,7 +165,7 @@ const CheckoutPage = (props) => {
             paymentType: paymentType
         }
         dispatch(addOrder(payload));
-        props.history.push("/order")
+        props.history.push("/account/orders")
     }
     const submitPaymentType = (e) => {
         setPaymentType(e.currentTarget.dataset.val)
@@ -301,7 +301,7 @@ const CheckoutPage = (props) => {
                                     <div className="options">
                                         <div className="option" data-val="esewa" onClick={submitPaymentType}>
                                             <label htmlFor="esewa">Esewa</label>
-                                            <img src={EsewaImg} id="esewa"  width={80} height={40}/></div>
+                                            <img src={EsewaImg} id="esewa"  width={60} height={30}/></div>
                                         {/* <div className="option paypal">paypal</div> */}
                                         <div className="option cards" data-val="card" onClick={submitPaymentType}>  card <CreditCardIcon id="card"/> </div>
                                     </div>

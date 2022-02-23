@@ -26,23 +26,21 @@
     height: 100%;
     object-fit: contain;
 }
-.page-container .row a{
-    text-decoration: none;
-    color: black;
-}
+
 .page-container .row .card{
-    margin: .3rem 0;
-    border-radius: .4rem;
+    /* border-radius: .4rem; */
     /* background-color: var(--bg-green); */
+    padding: 2vmin 0;
 }
 .page-container .row .card .card-header{
     color: var(--bg-green);
     padding: .8vmin;
     text-transform: capitalize;
 }
-.page-container .row .card .card-body{
+.page-container .row.orders .card .card-body{
     background-color: var(--light);
     overflow: hidden;
+    display: flex;
 }
 .page-container .row a .order-details{
     /* display: flex; */
@@ -50,56 +48,56 @@
 
 }
 
-.page-container .row .detail-container .order-details  .order-detail{
+.page-container .row  .order-details  .order-detail{
     box-shadow: 0 0 10px 0 var(--dark);
     padding: .6rem;
     background-color: var(--light);
     border-radius: .2rem;
 }
-.page-container .row .detail-container .order-details  .order-detail div{
+.page-container .row  .order-details  .order-detail div{
     text-transform: capitalize;
 }
-.page-container .row .detail-container .order-details  .order-actions.buttons{
+.page-container .row  .order-details  .order-actions.buttons{
     /* box-shadow: 0 0 10px 0 var(--dark); */
     /* background-color: var(--light); */
     padding: .6rem;
 }
-.page-container .row .detail-container .order-details  .order-actions.buttons .button{
+.page-container .row  .order-details  .order-actions.buttons .button{
     box-shadow: 0 0 5px 0 var(--dark);
     padding:.6rem .3rem;
     background-color: var(--light);
     margin: 0 .3rem;
     text-transform: capitalize;
 }
-.page-container .row .detail-container .order-details .order-actions.buttons .button:last-child{
+.page-container .row  .order-details .order-actions.buttons .button:last-child{
     background:var(--lightblue);
     color: var(--light);
 }
-.page-container .row .detail-container .order-details .items{
+.page-container .row  .order-details .items{
     padding: 1.9vmin;
     width: 100%;
     box-shadow: 0 0 10px 0 rgba(14, 7, 7, 0.315);
-    margin: .6rem 0;
+    margin: .6rem auto;
     border-radius: .4rem;
     height: 220px;
     background-color: var(--light);
     display: flex;
     flex-direction: column;
 }
-.page-container .row .detail-container .order-details .items .details{
+.page-container .row  .order-details .items .details{
     display: flex;
     margin: .4rem 0;
     align-items: center;
     justify-content: flex-start;
 }
-.page-container .row .detail-container .order-details .items .details .item-details{
+.page-container .row  .order-details .items .details .item-details{
     /* display: flex; */
     /* align-items: center; */
     /* width: 70%; */
     padding: 0 1vmin;
     /* box-shadow: inset 0 0 10px 0 black; */
 }
-.page-container .row .detail-container .order-details .items .item-track{
+.page-container .row  .order-details .items .item-track{
     display: flex;
     align-items: center;
     width: 80%;
@@ -113,28 +111,28 @@
     /* height: auto; */
     /* align-items: center; */
 }
-.page-container .row .detail-container .order-details .items .item-track .status-container{
+.page-container .row  .order-details .items .item-track .status-container{
     width: 20.33%;
     background-color: var(--success);
-    height: 5px;
+    height: .2vmin;
     display: flex;
     flex-direction: column;
     /* position: ; */
     /* align-items: center; */
 }
-.page-container .row .detail-container .order-details .items .item-track .status-container:last-child{
+.page-container .row  .order-details .items .item-track .status-container:last-child{
     width: 0;
     /* align-items: center; */
 }
 
-.page-container .row .detail-container .order-details .items .item-track .status-container.active{
+.page-container .row  .order-details .items .item-track .status-container.active{
     background-color: var(--bg-green);
     /* align-items: center; */
 }
 
-.page-container .row .detail-container .order-details .items .item-track .status-container .point{
-    width: 20px;
-    height: 20px;
+.page-container .row  .order-details .items .item-track .status-container .point{
+    width: 2vmin;
+    height: 2vmin;
     background-color: var(--success);
     border-radius: 50%;
     position: absolute;
@@ -143,17 +141,17 @@
     transform: translate(-50%,-50%);
     /* align-items: center; */
 }
-.page-container .row .detail-container .order-details .items .item-track .status-container .point.active{
+.page-container .row  .order-details .items .item-track .status-container .point.active{
     background-color: var(--bg-green);
     /* align-items: center; */
 }
-.page-container .row .detail-container .order-details .items .item-track .status-container .order-info{
-    margin: .3rem;
+.page-container .row  .order-details .items .item-track .status-container .order-info{
+    margin-top: .9vmin;
 }
-.page-container .row .detail-container .order-details .items .delivery{
+.page-container .row  .order-details .items .delivery{
     font-size: 2.2vmin;
 }
-.page-container .row .detail-container .order-details .items .delivery .delivery-date{
+.page-container .row  .order-details .items .delivery .delivery-date{
     text-decoration: underline;
     color: var(--bg-green);
     font-weight: bold;

@@ -20,8 +20,9 @@ const initialState = {
 
 }
 const bannerImg = (pages) => {
+    // console.log(pages)
     let bannerImages = [];
-    pages.map((page) => {
+    pages && pages.map((page) => {
         page.banners.map(banner => {
             bannerImages.push(banner.img)
         })
@@ -43,16 +44,20 @@ const bannerImg = (pages) => {
 
 // }
 const getProductByCategory = (products) => {
+    if(products.length > 0) {
 
-    let header = products.reduce((values, product) => {
-        if (!values.includes(product.category.name)) {
+        // console.log(products)
+        let header = products.reduce((values, product) => {
+            // console.log(product)
+            if (!values.includes(product.category.name)) {
             values.push(product.category.name)
         }
         return values
     }, []);
     return header
 }
-const product = (state = initialState, action) => {
+}
+export default (state = initialState, action) => {
     switch (action.type) {
         case productsConstants.GET_ALL_PRODUCTS_SUCCESS:
             const banners = bannerImg(action.payload.page);
@@ -132,5 +137,3 @@ const product = (state = initialState, action) => {
     }
     return state;
 };
-
-export default product;

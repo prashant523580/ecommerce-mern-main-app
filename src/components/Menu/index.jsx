@@ -1,9 +1,15 @@
-import { Link } from '@mui/material';
 import React,{useEffect} from 'react';
-import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllCategory} from '../../actions';
+// import { NavLink } from 'react-router-dom';
 import "./style.css";
 function Menu(props) {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getAllCategory());
+        // dispatch(getAllProduct());
+        // dispatch(getInitialData());  
+      },[]);
     const category = useSelector(state => state.category)
         const renderCategory = (categories) => {
         

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="example.appcache">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#ffffff"/>
     <meta
       name="description"
       content="Website ecommerce web site"/>
-      <meta name="crawlable" content="https://ecommerce-mern-main-app.herokuapp.com">
+    <meta name="crawlable" content="https://e-shopnepal.herokuapp.com">
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.png" />
-    <link rel="canonical" href="https://ecommerce-mern-main-app.herokuapp.com">
+    <link rel="canonical" href="https://e-shopnepal.herokuapp.com">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
@@ -25,7 +25,15 @@
 
     if("serviceWorker" in navigator){
       window.addEventListener("load",() => {
-        // navigator.serviceWorker.register("/serviceWorker.js");
+        navigator.serviceWorker.register("./serviceWorker.js",{scope:"/"})
+        .then((registration) => {
+          console.log('serviceWorker registration  successfully with scope', registration.scope)
+        }).catch((err) => {
+          console.log("serviceWorker REgistration failed", err)
+        });
+        // navigator.serviceWorker.ready.then(function(swRegistration){
+        //   return swRegistration.sync.register('bgSync');
+        // })
       });
     }
   </script>

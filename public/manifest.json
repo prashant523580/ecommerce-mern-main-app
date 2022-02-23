@@ -1,6 +1,10 @@
 {
   "short_name": "Shopping",
   "name": "shopping",
+  "start_url" : "/",
+  "id":"/",
+  "display": "standalone",
+  "background_color": "#ffffff",
   "icons": [
 
     {
@@ -14,9 +18,6 @@
       "sizes": "512x512",
       "purpose": "maskable"
     }
-  ],
-  "start_url": "/",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
+
 }

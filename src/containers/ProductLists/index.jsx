@@ -4,8 +4,7 @@ import './style.css';
 import ProductStore from "./ProductStore";
 import   getParam from "../../utils/getParam";
 import ProductPage from "./ProductPage";
-import OtherStore from "./othersPage/index.other"
-// import { useParams } from "react-router-dom";
+import OtherStore from "./othersPage/index.other";
 const ProductLists = (props) => {
     const params = getParam()
     const renderProduct = () => {

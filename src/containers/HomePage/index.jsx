@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllProduct } from '../../actions';
@@ -10,8 +10,8 @@ import { generateImgUrl } from '../../urlConfig';
 function HomePage(props) {
     const productPage = useSelector(state => state.product);
     const { products, page, category } = productPage;
-    const [carouselImg, setCarouselImg] = useState();
-    const [categories, setCategories] = useState(category);
+
+    // const [categories, setCategories] = useState(category);
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getAllProduct());
@@ -22,12 +22,16 @@ function HomePage(props) {
         // console.log(header) 
         let categories = [];
 
+        if(products.length > 0 ){
         products.filter((product) => {
-            if (product.category.name === category) {
-                // return product
-                categories.push(product)
-            }
-        });
+        //    console.log(product.category.name)
+               if (product.category.name === category) {
+                //    console.log(product)
+                   categories.push(product)
+                }
+            });
+        }
+        // console.log(categories)
         let currentCategoryProduct =  categories.map((product,ind) => {
             return(
                 <Link to={`/${product.slug}/${product._id}/p`} key={ind}>
@@ -37,7 +41,8 @@ function HomePage(props) {
                     <img src={generateImgUrl(product.productPicture[0].img)} alt={product.name} />
                     </div>
                     <div className="product-details">
-                        <span>{product.name.split(' ',3)}</span>
+                        <div className='product-name'>{product.name.split(' ',3)}</div>
+                        <div className='product-price'>Rs.{product.price}</div>
                     </div>
                 </div>
                 </Link>
@@ -50,50 +55,36 @@ function HomePage(props) {
 
     }
 
-    const getProductByCategory = (products) => {
+    // const getProductByCategory = (products) => {
 
-        //    console.log(productCategory(header[1],products));
+    //     //    console.log(productCategory(header[1],products));
 
-        let header = products.reduce((values, product) => {
-            if (!values.includes(product.category.name)) {
-                values.push(product.category.name)
-            }
-            return values
-        }, []);
-        setCategories(productCategory(header[1]));
+    //     let header = products.reduce((values, product) => {
+    //         if (!values.includes(product.category.name)) {
+    //             values.push(product.category.name)
+    //         }
+    //         return values
+    //     }, []);
+    //     setCategories(productCategory(header[1]));
 
-    }
-    useEffect(() => {
-        getProductByCategory(products)
-        // console.log(category)
-        // console.log(categories)
-    }, [products])
+    // }
+   
     return (
         <>
             <div className="page-container">
 
                 <Carousel>
-                    {
-
-                        //    page.length > 0 &&  page.map((banner,ind) => 
-                        //    {
-                        //         // return <CarouselItem key={ind}><img src={banner}/></CarouselItem>
-                        // })
-
-
-                    }
-
                     <CarouselItem><img src={page[1]} alt="carousel1" /></CarouselItem>
                     <CarouselItem><img src={page[0]} alt="carousel1"/></CarouselItem>
                     <CarouselItem><img src={page[2]} alt="carousel1"  /></CarouselItem>
-                    <CarouselItem><img src={page[6]} alt="carousel1"  /></CarouselItem>
-                    <CarouselItem><img src={page[8]} alt="carousel1"  /></CarouselItem>
                     <CarouselItem><img src={page[5]} alt="carousel1"  /></CarouselItem>
-                    <CarouselItem><img src={page[7]} alt="carousel1"  /></CarouselItem>
+                    <CarouselItem><img src={page[4]} alt="carousel1"  /></CarouselItem>
+                    <CarouselItem><img src={page[2]} alt="carousel1"  /></CarouselItem>
+                    <CarouselItem><img src={page[3]} alt="carousel1"  /></CarouselItem>
 
                 </Carousel>
                 {
-                    category.map((cate, ind) => {
+                 category.length > 0 &&  category.map((cate, ind) => {
                         return (
 
             <Card key={ind} header={{
@@ -109,22 +100,9 @@ function HomePage(props) {
                      
                   
 </Card>
-                            // <section key={ind}>
-                                
-                            //     <div className="head">
-                            //         <div className="category">
-                            //             {cate}
-                            //         </div>
-                            //     </div>
-                            //     <div className="body">
-                            //         <div className="name">{productCategory(cate)}</div>
-                            //     </div>
-                            // </section>
-                        )
-                    })
-
-
-                }
+                    )
+                })
+            }
             </div>
         </>
     )

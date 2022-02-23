@@ -12,7 +12,7 @@ const OrderDetails = (props) => {
     useEffect(() => {
         const payload = { orderID: oId }
         dispatch(getOrderDetails(payload))
-    }, []);
+    }, [dispatch,oId]);
     const formateDate = (date) => {
         if (date) {
             const d = new Date(date);
@@ -50,7 +50,6 @@ const OrderDetails = (props) => {
         <>
             <div className="page-container">
                 <div className="row">
-                    <div className="detail-container">
                         <div className="order-details">
                             <Card header={
                                 {
@@ -78,9 +77,10 @@ const OrderDetails = (props) => {
                                 }
                             >
                                 {
-                                    orderDetails.items.map((item, ind) => (
-
+                                  orderDetails.items.length >0 &&  orderDetails.items.map((item, ind) => (
+                                    
                                         <div className="items" key={ind}>
+                                    {console.log(item)}
                                             <div className="details">
 
                                                 <div className="image-container">
@@ -91,6 +91,7 @@ const OrderDetails = (props) => {
                                                 </div>
                                                 <div className="item-details">
                                                     <div> {item.productId.name.split(" ",3)}</div>
+                                                    <div className="quantity">{item.productId.purchasedQuantity}</div>
                                                     <div> Payable price : {item.payablePrice}</div>
 
                                                 </div>
@@ -129,7 +130,7 @@ const OrderDetails = (props) => {
                             </Card>
                         </div>
                     </div>
-                </div>
+            
                 <div className="row">
 
                 </div>

@@ -1,6 +1,5 @@
 // import axios from "axios"
 import axios from "../helpers/axios"
-import { api } from "../urlConfig"
 import { authConstants, CartConstants } from "./constant"
 
 export const login = (user) => {
