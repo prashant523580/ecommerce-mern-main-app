@@ -44,7 +44,7 @@ export const login = (user) => {
         }
     }
 export const signup = (user) => {
-console.log(user)
+// console.log(user)
     return async (dispatch)=> {
         dispatch({type:authConstants.LOGIN_REQUEST});
 
@@ -58,7 +58,7 @@ console.log(user)
         const res = await axios.post("/signup",{
             ...user
         })
-        console.log(res)
+        // console.log(res)
         if(res.status === 201){
             const {message,token} = res.data;
             localStorage.setItem('token-',token);
@@ -110,7 +110,8 @@ export const signout = ()=> {
        
      
 
-            localStorage.clear();
+            localStorage.removeItem("user-");
+            localStorage.removeItem("token-")
             dispatch({
                 type: authConstants.LOGOUT_SUCCESS
             });
