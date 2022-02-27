@@ -11,8 +11,25 @@
     white-space: nowrap;
     transition: transform .4s ease-in-out;
 }
+.paginate-nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+}
+.paginate-nav::-webkit-scrollbar{
+    display: none;
+}
+.paginate-nav button{
+    margin: 0 .3vmin;
+}
+button .slide{
+    width: 40px;
+    height: 40px;
+    margin: .3rem .3rem;
+}
 .slide{
-    height: 50vh;
+    height: 60vh;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -37,7 +54,7 @@
     top: 50%;
     transform: translateY(-50%);
     opacity: .4;
-    font-size: 1.9em;
+    font-size: 2.9em;
     border-radius: .4rem;
     color: rgb(14, 14, 19);
     background-color: rgba(116, 112, 109, 0.699);
@@ -74,8 +91,24 @@ button.active{
     /* z-index: 23; */
 }
 
-@media screen and (max-width:790px) {
+@media screen and (max-width:680px) {
     .slide{
-        height: 40vh;
+        height: 50vh;
     }
+    .images .slide{
+        /* width: 100px; */
+        /* height: 600px; */
+    }
+    .images button .slide{
+        width: 30px;
+        height: 30px;
+        /* margin: auto; */
+    }
+    .images .slide img{
+        object-fit: contain;
+    }
+    .images .buttons {
+        display: none;
+    }
+
 }

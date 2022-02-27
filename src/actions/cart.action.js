@@ -21,8 +21,13 @@ const getCartItems = () => {
                     }
                 }
             }catch(error){
-
-                console.log(error.response);
+                dispatch({
+                    type:CartConstants.ADD_TO_CART_FAILURE,
+                    payload:{
+                        error : error.response
+                    }
+                })
+                // console.log(error.response);
             }
         }
 }

@@ -1,86 +1,89 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./productCarousel.css";
-import {useSwipeable} from "react-swipeable";
-// import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
-import { width } from "@mui/system";
-export const ProductCarouselItem = ({ children, width }) => {
-    return (
-        <div className="slide" style={{ width: width }}>
-            {children}
-        </div>
-    )
-}
+const ProductCarousel = (props) =>{
+    const {children, show} = props
 
-const ProductCarousel = ({children}) => {
-   
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [pause,setPause] = useState(0);
-   
-    const updateProductActive = (currentActive) => {
-        if (currentActive < 0) {
-     
-            currentActive = React.Children.count(children) - 1;
-        } else if (currentActive >= React.Children.count(children)) {
-            currentActive = 0;
-           
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const [length, setLength] = useState(children.length)
+
+    const [touchPosition, setTouchPosition] = useState(null)
+
+    // Set the length to match current children from props
+    useEffect(() => {
+        setLength(children.length)
+    }, [children])
+
+    const next = () => {
+        if (currentIndex < (length - show)) {
+            setCurrentIndex(prevState => prevState + 1)
         }
-        setActiveIndex(currentActive);
     }
-    useEffect(()=> {
-        const interval = setInterval(() => {
-            if(!pause){
 
-                updateProductActive(activeIndex + 1)
-            }
-        },3000);
-        return () => {
-            if(interval){
-                    clearInterval(interval)
-   ``             
-            }
+    const prev = () => {
+        if (currentIndex > 0) {
+            setCurrentIndex(prevState => prevState - 1)
         }
-    });
-    const handlers = useSwipeable({
-        onSwipedRight : () => updateProductActive(activeIndex +1),
-        onSwipedLeft: ()=> updateProductActive(activeIndex -1)
-    })
-    return (
-        <>
-            <div className="product-carousel-container">
+    }
 
-                <div className="carousel" 
-                {...handlers}
-                onMouseEnter={() => setPause(true)}
-                onMouseLeave={() => setPause(false)}
+    const handleTouchStart = (e) => {
+        const touchDown = e.touches[0].clientX
+        setTouchPosition(touchDown)
+    }
+
+    const handleTouchMove = (e) => {
+        const touchDown = touchPosition
+
+        if(touchDown === null) {
+            return
+        }
+
+        const currentTouch = e.touches[0].clientX
+        const diff = touchDown - currentTouch
+
+        if (diff > 5) {
+            next()
+        }
+
+        if (diff < -5) {
+            prev()
+        }
+
+        setTouchPosition(null)
+    }
+    return(
+        <>  <div className="carousel-container">
+        <div className="carousel-wrapper">
+            {/* You can alwas change the content of the button to other things */}
+            {
+                currentIndex > 0 &&
+                <button onClick={prev} className="left-arrow">
+                    &lt;
+                </button>
+            }
+            <div
+                className="carousel-content-wrapper"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+            >
+                <div
+                    className={`carousel-content show-${show}`}
+                    style={{ transform: `translateX(-${currentIndex * (100 / show)}%)` }}
                 >
-                   
-                    <div className="inner" style={{ transform: `translateX(-${(activeIndex  ) * 100 }px)`,
-                    //  width: (React.Children.count(children) - 1) * 100 + "px" 
-                     }}>
-                        {
-                            React.Children.map(children, (child, index) => {
-                                return React.cloneElement(child, { width: "600px" });
-                            })
-                        }
-                    </div>
-                <div className="buttons">
-                    <button onClick={() => {
-                        updateProductActive(activeIndex - 1)
-                    }}>&#8249;</button>
-
-                    <button
-                        onClick={() => {
-                            updateProductActive(activeIndex + 1)
-                        }}
-                    >&#8250;</button>
+                    {children}
                 </div>
-                </div>
-               
             </div>
+            {/* You can alwas change the content of the button to other things */}
+            {
+                currentIndex < (length - show) &&
+                <button onClick={next} className="right-arrow">
+                    &gt;
+                </button>
+            }
+        </div>
+    </div>
+
         </>
     )
-}
-
+} 
 export default ProductCarousel;

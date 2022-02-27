@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import "./carousel.css";
-import {useSwipeable} from "react-swipeable";
+import { useSwipeable } from "react-swipeable";
 export const CarouselItem = ({ children, width }) => {
     return (
         <div className="slide" style={{ width: width }}>
@@ -11,8 +11,8 @@ export const CarouselItem = ({ children, width }) => {
 }
 const Carousel = ({ children }) => {
     const [activeIndex, setActiveIndex] = useState(0);
-    const [pause,setPause] = useState(0);
-   
+    const [pause, setPause] = useState(0);
+
     const updateActive = (currentActive) => {
         if (currentActive < 0) {
             currentActive = React.Children.count(children) - 1;
@@ -21,68 +21,73 @@ const Carousel = ({ children }) => {
         }
         setActiveIndex(currentActive);
     }
-    useEffect(()=> {
+    useEffect(() => {
         const interval = setInterval(() => {
-            if(!pause){
+            if (!pause) {
 
                 updateActive(activeIndex + 1)
             }
-        },5000);
+        }, 5000);
         return () => {
-            if(interval){
-                    clearInterval(interval)
-                
+            if (interval) {
+                clearInterval(interval)
+
             }
         }
     });
     const handlers = useSwipeable({
-        onSwipedRight : () => updateActive(activeIndex-1),
-        onSwipedLeft: ()=> updateActive(activeIndex +1)
+        onSwipedRight: () => updateActive(activeIndex - 1),
+        onSwipedLeft: () => updateActive(activeIndex + 1)
     })
     return (
         <>
             <div className="carousel-container">
 
-                <div className="carousel" 
-                {...handlers}
-                onMouseEnter={() => setPause(true)}
-                onMouseLeave={() => setPause(false)}
+                <div className="carousel"
+                    {...handlers}
+                    onMouseEnter={() => setPause(true)}
+                    onMouseLeave={() => setPause(false)}
                 >
-                   
-                    <div className="inner" style={{ transform: `translateX(-${activeIndex * 100}%)`,
-                    //  width: (React.Children.count(children) - 1) * 100 + "" 
-                     }}>
+
+                    <div className="inner" style={{
+                        transform: `translateX(-${activeIndex * 100}%)`,
+                        //  width: (React.Children.count(children) - 1) * 100 + "" 
+                    }}>
                         {
                             React.Children.map(children, (child, index) => {
                                 return React.cloneElement(child, { width: "100%" });
                             })
                         }
                     </div>
-                <div className="buttons">
-                    <button onClick={() => {
-                        updateActive(activeIndex - 1)
-                    }}>&#8249;</button>
-                    {/* {
-                        React.Children.map(children, (child, index) => {
+                    <div className="buttons">
+                        <button onClick={() => {
+                            updateActive(activeIndex - 1)
+                        }}>&#8249;</button>
+
+
+                        <button
+                            onClick={() => {
+                                updateActive(activeIndex + 1)
+                            }}
+                        >&#8250;</button>
+
+                    </div>
+                    <div className="paginate-nav">
+
+                    {
+                      React.Children.map(children, (child, index) => {
                             return (
                                 <button
                                 className={`${activeIndex=== index ? "active" : ""}`}
                                 onClick={() => {
                                     updateActive(index)
                                 }}>
-                                    {index + 1}
+                                    {child}
                                 </button>
                             )
                         })
-                    } */}
-                    
-                        <button
-                        onClick={() => {
-                            updateActive(activeIndex + 1)
-                        }}
-                        >&#8250;</button>
-                    
-                </div>
+                    } 
+                    </div>
                 </div>
             </div>
         </>

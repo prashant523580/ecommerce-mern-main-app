@@ -20,9 +20,9 @@ const ProductLists = (props) => {
                 case "product" :
                     content = <OtherStore {...props}/>
                     break;
-            // default : 
-            //     content = <OtherStore {...props}/>
-            //     break;
+            default : 
+                content = <OtherStore {...props}/>
+                break;
         }
         return content;
     }

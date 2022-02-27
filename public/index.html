@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#ffffff"/>
     <meta
       name="description"
       content="Website ecommerce web site"/>
-    <meta name="crawlable" content="https://e-shopnepal.herokuapp.com">
+    <!-- <meta name="crawlable" content="https://e-shopnepal.herokuapp.com/"> -->
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.png" />
     <link rel="canonical" href="https://e-shopnepal.herokuapp.com">
     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
@@ -19,13 +19,15 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <a href="
+    https://example.com/stuff"></a>
   </body>
 
   <script>
 
     if("serviceWorker" in navigator){
       window.addEventListener("load",() => {
-        navigator.serviceWorker.register("./serviceWorker.js",{scope:"/"})
+        navigator.serviceWorker.register("/serviceWorker.js",{scope:"/"})
         .then((registration) => {
           console.log('serviceWorker registration  successfully with scope', registration.scope)
         }).catch((err) => {

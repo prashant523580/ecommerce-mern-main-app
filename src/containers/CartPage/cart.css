@@ -1,6 +1,7 @@
 .cart-page-container{
     display: flex;
     justify-content: space-between;
+    flex-direction: row;
     padding: 15px;
 }
 .cart-page-container .cart-item{
@@ -77,14 +78,15 @@
     background-color: var(--bg-green);
     padding-left: 10px;
     text-transform: capitalize;
-    color: var(--light); font-size: 2.3vmin;
+    color: var(--light);
+     font-size: 3.5vmin;
 }
 .cart-item.right .cart-price .items h4{
     position: relative;
     padding: 2px 30px;
     display: flex;
     align-items: center;
-    text-transform: capitalize; font-size: 2.5vmin;
+    text-transform: capitalize; font-size: 3vmin;
     text-decoration:underline;
 }
 .cart-item.right .cart-price .items h4::before{
@@ -98,4 +100,18 @@ details summary{
     text-transform: capitalize;
     text-decoration: underline;
     cursor: pointer;
+}
+
+@media screen and (max-width:680px) {
+
+    .cart-page-container{
+        flex-direction: column;
+    }
+    .cart-page-container .cart-item{
+        width: 100%;
+        padding: .9vmin;
+        margin: .2rem ;
+        display: flex;
+        flex-direction: column;
+    }
 }

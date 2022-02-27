@@ -11,7 +11,7 @@ const OrderPage = (props) => {
     const  [order,setOrder] = useState(auth.orders);
     useEffect(() => {
         dispatch(getOrders());
-    },[]);
+    },[dispatch]);
     useEffect(() => {
 
         setOrder(auth.orders)

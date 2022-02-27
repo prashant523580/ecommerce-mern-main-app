@@ -4,7 +4,8 @@
         padding: .6rem .4rem;
     }
     .product-details-container .product-img-preview{
-        height: 250px;
+        /* height: 250px; */
+        height: auto;
     }
     .product-details-container .product-img-preview .images{
     

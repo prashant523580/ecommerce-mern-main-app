@@ -20,7 +20,7 @@ const ProductPage = (props) => {
         }
 
         dispatch(getProductPage(payload));
-    },[])
+    },[dispatch,props])
 
     return (
         <>
@@ -49,7 +49,7 @@ const ProductPage = (props) => {
                                          <img src={generateImgUrl(product.productPicture[0].img)} alt={product.name} />
                                   </div>
                                   <div className="product-details">
-                                      <div className="product-name">{product.name.split(' ',3)}</div>
+                                      <div className="product-name">{product.name}</div>
                                       <div className="product-price">Rs {product.price}</div>
                                   </div>
                               </div>

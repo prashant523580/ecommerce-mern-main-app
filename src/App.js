@@ -17,8 +17,6 @@ function App() {
   const dispatch = useDispatch()
   const auth = useSelector(state => state.auth);
   // const category = useSelector(state => state.category);
-  
-
   useEffect(()=> {
     if(!auth.authenticate)(
       dispatch(isUserLoggedIn())
@@ -32,15 +30,15 @@ function App() {
   return (
     <>
 
-      <Header />
+      <Header />  
       <Menu />
       <Switch>
           <Route exact path={"/"} component={HomePage} />
           <Route exact path="/cart" component={CartPage}/>
           <Route exact path="/checkout" component={CheckoutPage}/>
           <Route exact path="/account/orders" component={OrderPage}/>
-          <Route exact path={"/:productSlug/:productId/p"} component={ProductDetailPage}/>
           <Route exact path="/orderDetails/:oId" component={OrderDetails}/>
+          <Route exact path={"/:productSlug/:productId/p"} component={ProductDetailPage}/>
           <Route exact  path={"/:slug"} component={ProductLists} />
         
       </Switch>

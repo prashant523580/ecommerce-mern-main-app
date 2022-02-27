@@ -23,7 +23,7 @@ const ProductStore = (props) => {
     
         dispatch(getProductBySlug(match.params.slug))
         // console.log(Object.keys(products.productsByPrice))
-    }, []);
+    }, [dispatch,props]);
    
     return (
         <>

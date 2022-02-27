@@ -13,13 +13,13 @@ const OrderDetails = (props) => {
         const payload = { orderID: oId }
         dispatch(getOrderDetails(payload))
     }, [dispatch,oId]);
-    const formateDate = (date) => {
-        if (date) {
-            const d = new Date(date);
-            return `${d.getFullYear()}- ${d.getMonth()}-${d.getDate()}`
-        }
-        return '';
-    };
+    // const formateDate = (date) => {
+    //     if (date) {
+    //         const d = new Date(date);
+    //         return `${d.getFullYear()}- ${d.getMonth()}-${d.getDate()}`
+    //     }
+    //     return '';
+    // };
 
   const formatDate2 = (date) => {
     const month = [
@@ -36,10 +36,15 @@ const OrderDetails = (props) => {
       "Nov",
       "Dec",
     ];
+    
+
+    let days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
     if (date) {
       const d = new Date(date);
-      return `${month[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+      return `${month[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()} 
+            ${days[d.getDay()]}`;
     }
+    return ''
   };
     // console.log(orderDetails)
 
@@ -103,7 +108,7 @@ const OrderDetails = (props) => {
                                                             <div className={`point ${status.isCompleted ? "active" : ""}`}></div>
                                                             <div className="order-info">
                                                                 <div className="status">{status.type}</div>
-                                                                <div className="date">{formateDate(status.date)}</div>
+                                                                <div className="date">{formatDate2(status.date)}</div>
                                                             </div>
                                                         </div>
                                                     ))

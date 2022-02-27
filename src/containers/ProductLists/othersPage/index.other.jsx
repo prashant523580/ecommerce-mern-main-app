@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getProductBySlug } from "../../../actions";
@@ -14,7 +14,7 @@ const OtherStore = (props) => {
 
         dispatch(getProductBySlug(match.params.slug))
         // console.log(Object.keys(products.productsByPrice))
-    }, []);
+    }, [dispatch,props]);
 
     return (
         <>

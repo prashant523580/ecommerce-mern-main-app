@@ -1,4 +1,3 @@
-
 const cacheName = "cache-version";
 const urlToCache = ["index.html","offline.html", "favicon.png"];
 
@@ -18,7 +17,7 @@ self.addEventListener("install",(e) => {
 
 //fetch
 self.addEventListener("fetch",(e) => {
-    if (!(evt.request.url.indexOf('http') === 0)) return; 
+    if (!(e.request.url.indexOf('http') === 0)) return; 
 
     e.respondWith(
         caches.match(e.request)

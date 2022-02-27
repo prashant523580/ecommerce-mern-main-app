@@ -4,6 +4,7 @@ import { addToCart, getProductDetailsById } from "../../actions";
 import { generateImgUrl } from "../../urlConfig";
 import "./style.css";
 import "./responsive.css";
+import Carousel, { CarouselItem } from "../../components/ui/carousel/carousel";
 
 const ProductDetailPage = (props) => {
     const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const ProductDetailPage = (props) => {
             }
         }
         dispatch(getProductDetailsById(payload));
-    }, []);
+    }, [dispatch]);
     useEffect(() => {
         if(productDetails.productPicture){
             setPreviewImg(productDetails.productPicture[0].img);
@@ -43,28 +44,51 @@ const ProductDetailPage = (props) => {
     if (Object.keys(product.productDetails).length === 0) {
         return null;
     }
-    
+    const imageZoom =(e) => {
+        console.log(e.target)
+    }
     return (
         <>
             <div className="product-details-container">
                 <div className="product-img-preview">
                     <div className="images">
+                            { window.innerWidth >= 680 ? (
                         <div className="vertical-img-stack">
                             {
-                                product.productDetails.productPicture.map((thumb, ind) =>
-                                    <div className="thumbnail" key={ind} onMouseEnter={ () =>previewImgClick(thumb.img)}>
+
+                                product.productDetails.productPicture.map((thumb, ind) => 
+                                <div className="thumbnail" key={ind} onMouseEnter={ () =>previewImgClick(thumb.img)}>
                                         <img src={generateImgUrl(thumb.img)}  alt={thumb.img} />
                                     </div>
                                 )
                             }
                         </div>
-                        <div className="picture-preview">
+                                ) : (
+                                    <Carousel>
+                                        {
+                                            product.productDetails.productPicture.map((thumb, ind) => 
+                                        
+                                                   <CarouselItem key={ind}>
+
+                                                       <img onClick={imageZoom} src={generateImgUrl(thumb.img)}  alt={thumb.img} />
+                                                   </CarouselItem> 
+                                            )
+                                     }
+                                 </Carousel>)
+                            }
+                        {
+                            window.innerWidth >= 680 ? (
+
+                                <div className="picture-preview">
                             <div className="preview">
                                 {/* <img src={generateImgUrl(product.productDetails.productPicture[0].img)} /> */}
                                 <img src={generateImgUrl(previewImg)} alt={"current-product"} />
                             </div>
-                        </div>
-                    </div>
+                        </div> 
+                                )
+                                : null
+                            }
+                            </div>
                     <div className="buttons">
                         <button onClick={addTOCart} className="btn"> {"add to cart"}</button>
                         <button className="btn" onClick={() => {
@@ -92,7 +116,7 @@ const ProductDetailPage = (props) => {
                         </ul>
                     </div>
                     <div className="product-details">
-                        <h3>{product.productDetails.name.split(" ",4)}</h3>
+                        <h3>{product.productDetails.name}</h3>
                         <div className="rating">
                             <div className="rating-count">
                                 3.4★

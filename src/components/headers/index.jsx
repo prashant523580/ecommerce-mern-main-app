@@ -41,14 +41,13 @@ const Header = (props) => {
     
     const cart = useSelector(state => state.cart);
     const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getAllProduct());
-    },[])
+    // useEffect(() => {
+    //     dispatch(getAllProduct());
+    // },[])
     console.log(products)
     useEffect(() => {
         setError(auth.error || current_user.error);
         setErrorModal(true);
-
         setTimeout(() => {
 
             dispatch({
@@ -70,8 +69,12 @@ const Header = (props) => {
         }, 3000);
     }, [auth.error, current_user.error]);
     useEffect(() => {
-        dispatch(getCartItems());
+        if(!auth.authenticate) {
+            
+           !auth.authenticate && dispatch(getCartItems());
+        }
     }, [auth.authenticate]);
+    // console.log(auth)
     const showErrorModal = () => {
 
         return (
@@ -121,7 +124,7 @@ const Header = (props) => {
         setLoginModal(false);
     }
     useEffect(() => {
-        if (auth.authenticate) {
+        if (!auth.authenticate) {
 
             setLoginModal(false);
         }
