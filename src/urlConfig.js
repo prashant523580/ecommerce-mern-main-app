@@ -1,6 +1,6 @@
-export const api = "https://ecommercemernbackend.herokuapp.com/api";
+export const api = "https://mernbackend-server.herokuapp.com/api";
 export const generateImgUrl = (image) => {
-    return `https://ecommercemernbackend.herokuapp.com/public/${image}`;
+    return `https://mernbackend-server.herokuapp.com/public/${image}`;
 }
 
 
