@@ -20,7 +20,7 @@ const ProductPage = (props) => {
         }
 
         dispatch(getProductPage(payload));
-    },[dispatch,props])
+    },[props])
 
     return (
         <>
@@ -42,7 +42,7 @@ const ProductPage = (props) => {
             } >
                           {
                               products.map((product,ind) => 
-                              <Link to={`/${product.slug}/${product._id}/p`} key={ind}>
+                              <Link className="product-link" to={`/${product.slug}/${product._id}/p`} key={ind}>
                               <div className="product">
                                   <div className=" product-img">
 

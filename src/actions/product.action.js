@@ -7,7 +7,7 @@ export const getAllProduct = () => {
             type: productsConstants.GET_ALL_PRODUCTS_REQUEST
         })
         const res = await axios.post("/product/getproduct");
-        // console.log(res)
+        console.log(res)
         if (res.status === 200) {
             const { products,page } = res.data;
             dispatch({

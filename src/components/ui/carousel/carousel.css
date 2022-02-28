@@ -97,7 +97,7 @@ button.active{
     }
     .images .slide{
         /* width: 100px; */
-        /* height: 600px; */
+        height: 400px;
     }
     .images button .slide{
         width: 30px;

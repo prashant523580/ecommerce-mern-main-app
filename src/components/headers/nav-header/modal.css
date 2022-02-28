@@ -189,7 +189,7 @@ form > .form-group .social-media div button img{
 }
 
 .close:hover {
-  transform: scale(1.2);
+  /* transform: scale(1.2); */
 }
 
 .close:active {

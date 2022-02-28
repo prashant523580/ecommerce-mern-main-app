@@ -15,7 +15,7 @@ const CartPage = (props) => {
     }, [cart.cartItems]);
 
     useEffect(() => {
-        if (auth.authenticate) {
+        if (!auth.authenticate) {
             dispatch(getCartItems());
         }
     }, [auth.authenticate]);

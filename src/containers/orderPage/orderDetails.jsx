@@ -12,7 +12,7 @@ const OrderDetails = (props) => {
     useEffect(() => {
         const payload = { orderID: oId }
         dispatch(getOrderDetails(payload))
-    }, [dispatch,oId]);
+    }, [oId]);
     // const formateDate = (date) => {
     //     if (date) {
     //         const d = new Date(date);

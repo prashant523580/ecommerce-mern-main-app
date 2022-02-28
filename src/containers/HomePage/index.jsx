@@ -16,21 +16,10 @@ function HomePage(props) {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getAllProduct());
-    }, [dispatch]);
+    }, []);
 
 
-    useEffect(() => {
-        // console.log(page,category)
-        console.log({screenWidth})
-        var animals = [
-            { animal: 'Horse', name: 'Henry', age: 43 },
-            { animal: 'Dog', name: 'Fred', age: 13 },
-            { animal: 'Cat', name: 'Frodo', age: 18 }
-        ];
-        
-        console.table(animals);
-        // window.addEventListener("resize", resizeWindow);
-    });
+    
 
     const productCategory = (category) => {
 
@@ -107,7 +96,7 @@ function HomePage(props) {
                                 leftHeader: cate
                             }
                             } >
-                                <ProductCarousel show={2}>
+                                <ProductCarousel show={ window.innerWidth < 680  ? 3 : 5}>
 
                                     {productCategory(cate)}
                                 </ProductCarousel>

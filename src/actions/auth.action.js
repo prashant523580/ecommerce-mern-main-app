@@ -10,7 +10,7 @@ export const login = (user) => {
             dispatch({type:authConstants.LOGIN_REQUEST});
             
             const res= await axios.post("/signin",{...user});
-            
+            console.log(res)
             if(res.status === 200){
                 const {user,token} = await res.data;
                 console.log(user)
@@ -130,7 +130,7 @@ export const addAddress = (payload) => {
                 let res = await axios.post("/user/address/create", {payload});
                 if(res.status === 201){
                     const {address} = res.data.address;
-
+                    console.log(address)
                     dispatch({
                         type: authConstants.ADD_ADDRESS_SUCCESS,
                         payload:{address}
@@ -169,7 +169,7 @@ export const addOrder = (payload) => {
     return async dispatch => {
         dispatch({type:authConstants.ADD_ORDER_REQUEST});
         const res = await axios.post("/user/addOrder",payload);
-        // console.log(res)
+        console.log(res)
         if(res.status === 201){
             const {order} = res.data;
             dispatch({

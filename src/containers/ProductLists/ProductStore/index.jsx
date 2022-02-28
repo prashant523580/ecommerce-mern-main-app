@@ -23,7 +23,7 @@ const ProductStore = (props) => {
     
         dispatch(getProductBySlug(match.params.slug))
         // console.log(Object.keys(products.productsByPrice))
-    }, [dispatch,props]);
+    }, [props]);
    
     return (
         <>
@@ -41,7 +41,7 @@ const ProductStore = (props) => {
                                            products.productsByPrice[key].map((product, ind) => {
                                                 return (
                                                     
-                                                        <Link to={`/${product.slug}/${product._id}/p`} key={ind} className="product" >
+                                                        <Link className="product-link" to={`/${product.slug}/${product._id}/p`} key={ind} className="product" >
 
                                                             <div className="product-img">
                                                              <img src={`${generateImgUrl(product.productPicture[0].img)}`} alt={product.name} />

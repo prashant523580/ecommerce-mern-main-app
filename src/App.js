@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './App.css';
-import { isUserLoggedIn, updateCart } from "./actions"
+import { getInitialData, isUserLoggedIn, updateCart } from "./actions"
 import HomePage from "./containers/HomePage/index";
 import Header from "./components/headers/index";
 import Menu from "./components/Menu/index";
@@ -23,10 +23,13 @@ function App() {
     )
   },[auth.authenticate])
   useEffect(() => {
-    if(auth.authenticate){
+    if(!auth.authenticate){
       dispatch(updateCart());
     }
   },[auth.authenticate])
+  useEffect(() => {
+    dispatch(getInitialData())
+  },[])
   return (
     <>
 
@@ -39,7 +42,7 @@ function App() {
           <Route exact path="/account/orders" component={OrderPage}/>
           <Route exact path="/orderDetails/:oId" component={OrderDetails}/>
           <Route exact path={"/:productSlug/:productId/p"} component={ProductDetailPage}/>
-          <Route exact  path={"/:slug"} component={ProductLists} />
+          <Route exact path={"/:slug"} component={ProductLists} />
         
       </Switch>
       <Footer />

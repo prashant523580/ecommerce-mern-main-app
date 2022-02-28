@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "./productCarousel.css";
-
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 const ProductCarousel = (props) =>{
     const {children, show} = props
-
+    
     const [currentIndex, setCurrentIndex] = useState(0)
     const [length, setLength] = useState(children.length)
-
+    
     const [touchPosition, setTouchPosition] = useState(null)
-
+    
+    useEffect(() => {
+        function resizeWindow(){
+            let clientX = window.pageXOffset;
+            console.log(clientX)
+            console.log(window.innerWidth)
+        }
+        window.addEventListener("resize",resizeWindow)
+    })
+    console.log("hello")
     // Set the length to match current children from props
     useEffect(() => {
         setLength(children.length)
@@ -58,7 +68,7 @@ const ProductCarousel = (props) =>{
             {
                 currentIndex > 0 &&
                 <button onClick={prev} className="left-arrow">
-                    &lt;
+                    <ArrowBackIosNewIcon/>
                 </button>
             }
             <div
@@ -77,7 +87,7 @@ const ProductCarousel = (props) =>{
             {
                 currentIndex < (length - show) &&
                 <button onClick={next} className="right-arrow">
-                    &gt;
+                    <ArrowForwardIosIcon/>
                 </button>
             }
         </div>

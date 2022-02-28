@@ -14,7 +14,7 @@ const OtherStore = (props) => {
 
         dispatch(getProductBySlug(match.params.slug))
         // console.log(Object.keys(products.productsByPrice))
-    }, [dispatch,props]);
+    }, [props]);
 
     return (
         <>

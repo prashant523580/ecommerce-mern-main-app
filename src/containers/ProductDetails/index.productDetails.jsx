@@ -22,7 +22,7 @@ const ProductDetailPage = (props) => {
             }
         }
         dispatch(getProductDetailsById(payload));
-    }, [dispatch]);
+    }, []);
     useEffect(() => {
         if(productDetails.productPicture){
             setPreviewImg(productDetails.productPicture[0].img);

@@ -2,6 +2,25 @@
     transition: all .2s linear;
 
 }
+.menu-btn{
+    display: none;
+}
+.nav-back-btn{
+    display: none;
+}
+.close{
+    font-weight: bold;
+    position: absolute;
+    top: 1%;
+    right: 2%;
+    color: white;
+    z-index: 4;
+    background-color: black;
+    /* border-radius: 50%; */
+}
+.close svg{
+    font-size: 18px;
+}
 nav{
     background-color: var(--bg-green);
     z-index: 999;
@@ -22,9 +41,7 @@ nav > ul > li {
 nav ul > li > span {
     display: block;
     margin: .5vmin;
-    /* font-size: 2.8vmin; */
-    font-size: 10.8px;
-    /* background-color: violet; */
+    font-size: 3vmin;
 }
 nav ul > li:hover{
     background: white;
@@ -53,7 +70,7 @@ nav > ul > li > ul > li > a {
     text-decoration: none;
     text-transform: capitalize;
     color:var(--primary);
-    font-size: 2.9vmin;
+    font-size: 3.2vmin;
 }
 
 nav > ul > li > ul > li > ul >li {
@@ -79,14 +96,14 @@ nav > ul > li > ul > li > ul >li  a:hover{
 nav > ul > li > ul > li > ul >li  a::before{
     content:"\00bb";
     position: absolute;
-    left: -3vmin;
+    left: -4vmin;
     top: -.25vmin;
     opacity: 0;
     transition: all .2s ease;
     text-shadow: 0 0 6px rgba(0,0,0,0.6);
 }
 nav > ul  li  ul  li ul li:hover a::before{
-    left: -1.3vmin;
+    left: -2.3vmin;
     opacity: 1;
     color: var(--success);
 }
@@ -97,3 +114,96 @@ nav ul > li > ul > li  >ul  li:hover a{
     transform: translateX(10px);
 }   
 
+@media screen and (max-width:680px) {
+    .nav-header{
+        display:  flex;
+        justify-content: flex-end;
+    }
+    .menu-btn{
+        display: block;
+        background-color: inherit;
+        color: white;
+    }
+
+    .nav-back-btn{
+        display: block;
+        display: none;
+    }
+    nav > ul {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 400px;
+        background-color: rgb(248, 246, 246);
+        box-shadow: 0 0 10px 1px black;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        z-index: 1;
+        overflow: hidden;
+        color: black;
+    }
+    nav > ul > li {
+    }
+    nav ul > li > span {
+        font-size: 20px;
+    }
+    nav ul > li:hover{
+        
+    } 
+    nav > ul > li > ul{
+        /* position: fixed; */
+        /* top: 0; */
+        /* width: 300px; */
+        /* background-color: rgb(2, 110, 101); */
+        display: none;
+        flex-direction: column;
+        /* height: 100vh; */
+    }
+    nav > ul > li:hover > ul{
+        display: flex;
+    }
+    nav > ul > li > ul > li{
+    }
+    nav > ul > li > ul > li > ul {
+        /* display: none;
+        height: 0;
+        overflow: hidden; */
+    }
+    nav .dropdown-btn{
+        color: red;
+    }
+nav  .dropdown-btn:hover ~ nav > ul > li > ul > li > ul{
+        background-color: rgb(1, 112, 103);
+        height: 200px;
+    }
+    nav > ul > li > ul > li > a {
+        font-size: 14px;
+    }
+    
+    nav > ul > li > ul > li > ul  {
+        
+        
+    }
+    nav > ul > li > ul > li > ul >li  a{
+        font-size: 14px;
+    }
+    
+    nav > ul > li > ul > li > ul >li  a:hover{
+        
+    }
+    nav > ul > li > ul > li > ul >li  a::before{
+        content:"\00bb";
+        position: absolute;
+        left: -4vmin;
+        top: -.25vmin;
+        opacity: 0;
+        transition: all .2s ease;
+        text-shadow: 0 0 6px rgba(0,0,0,0.6);
+    }
+    nav > ul  li  ul  li ul li:hover a::before{
+        
+    }
+    nav ul > li > ul > li  >ul  li:hover a{
+    }  
+}

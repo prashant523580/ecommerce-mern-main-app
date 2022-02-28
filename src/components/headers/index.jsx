@@ -44,7 +44,6 @@ const Header = (props) => {
     // useEffect(() => {
     //     dispatch(getAllProduct());
     // },[])
-    console.log(products)
     useEffect(() => {
         setError(auth.error || current_user.error);
         setErrorModal(true);
@@ -69,11 +68,10 @@ const Header = (props) => {
         }, 3000);
     }, [auth.error, current_user.error]);
     useEffect(() => {
-        if(!auth.authenticate) {
-            
-           !auth.authenticate && dispatch(getCartItems());
+        if(auth.authenticate === true) {
+             dispatch(getCartItems());
         }
-    }, [auth.authenticate]);
+    }, []);
     // console.log(auth)
     const showErrorModal = () => {
 
@@ -118,8 +116,11 @@ const Header = (props) => {
     }
     const submitLogin = (e) => {
         e.preventDefault();
-
-        dispatch(login(user));
+        let payload = {
+            email_user : user.email_user,
+            password : user.password
+        }
+        dispatch(login(payload));
 
         setLoginModal(false);
     }
