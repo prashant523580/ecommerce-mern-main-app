@@ -10,7 +10,7 @@
   --success: rgb(8, 116, 100);
   --alert: red;
   --light: white;
-  --dark: #333;
+  --dark: rgb(19, 14, 14);
   --info: lightblue;
   --danger: rgb(135, 3, 3);
 }

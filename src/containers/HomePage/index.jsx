@@ -7,6 +7,7 @@ import Carousel, { CarouselItem } from '../../components/ui/carousel/carousel';
 import ProductCarousel from '../../components/ui/carousel/ProductCarousel';
 import { generateImgUrl } from '../../urlConfig';
 // import "./style.scss";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 function HomePage(props) {
     const productPage = useSelector(state => state.product);
@@ -35,18 +36,22 @@ function HomePage(props) {
                 }
             });
         }
-        console.log(categories)
+        // console.log(categories)
         let currentCategoryProduct = categories.map((product, ind) => {
             return (
                 <Link to={`/${product.slug}/${product._id}/p`} key={ind} >
                     <div className="product">
                         <div className=" product-img">
 
-                            <img src={generateImgUrl(product.productPicture[0].img)} alt={product.name.split(" ", 2)} />
+                            <img src={generateImgUrl(product.productPicture[0].img)} alt={product.productPicture[0].img} />
                         </div>
                         <div className="product-details">
                             <div className='product-name'>{product.name}</div>
                             <div className='product-price'>Rs.{product.price}</div>
+                        </div>
+                        <div className="card-btns">
+                            <button className="btn">add to cart</button>
+                            <button className="btn"><FavoriteBorderIcon/> </button>
                         </div>
                     </div>
                 </Link>
@@ -96,7 +101,8 @@ function HomePage(props) {
                                 leftHeader: cate
                             }
                             } >
-                                <ProductCarousel show={ window.innerWidth < 680  ? 3 : 5}>
+                            {/* <ProductCarousel show={ 5}> */}
+                                <ProductCarousel show={ window.innerWidth < 680  ? ( (window.innerWidth < 460) ? 2: 3) : 5}>
 
                                     {productCategory(cate)}
                                 </ProductCarousel>

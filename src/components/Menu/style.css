@@ -13,17 +13,19 @@
     position: absolute;
     top: 1%;
     right: 2%;
-    color: white;
+    color: rgb(201, 188, 188);
     z-index: 4;
-    background-color: black;
+    /* background-color: black; */
     display: none;
     /* border-radius: 50%; */
+    cursor: pointer;
 }
 .close svg{
     font-size: 18px;
 }
 nav{
-    background-color: var(--bg-green);
+    /* background-color: var(--bg-green); */
+    background-color: var(--secondary);
     z-index: 999;
 }
 nav  ul{
@@ -39,22 +41,24 @@ nav > ul > li {
     cursor: pointer;
 
 }
-nav ul > li > span {
+nav ul > li > div {
     display: block;
     margin: .5vmin;
+    padding: 6px 8px;
     font-size: 3vmin;
 }
-nav ul > li:hover{
-    background: white;
+nav > ul > li:hover{
+    background: rgb(248, 248, 248);
     color: var(--bg-green);
 } 
 nav > ul > li > ul{
     position: absolute;
     left: 0;
     right: 0;
-    box-shadow: 0 0 20px 4px rgba(0, 0, 0, 0.425);
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.425);
     display: none;
     background:var(--light);
+    background: linear-gradient(rgb(255, 255, 255),rgb(248, 248, 248),rgb(246, 246, 248)) 1%;
     padding: .8vmin .3vmin;
 }
 nav > ul > li:hover ul{
@@ -149,15 +153,15 @@ nav ul > li > ul > li  >ul  li:hover a{
     }
     nav > ul > li {
     }
-    nav ul > li > span {
-        font-size: 20px;
+    nav ul > li > div {
+        font-size: 15px;
     }
     nav ul > li:hover{
         
     } 
     nav > ul > li > ul{
-        /* position: fixed; */
-        /* top: 0; */
+        /* position: fixed;
+        top: 0; */
         /* width: 300px; */
         /* background-color: rgb(2, 110, 101); */
         display: none;
@@ -175,14 +179,14 @@ nav ul > li > ul > li  >ul  li:hover a{
         overflow: hidden; */
     }
     nav .dropdown-btn{
-        color: red;
+        color: rgb(105, 101, 101);
     }
 nav  .dropdown-btn:hover ~ nav > ul > li > ul > li > ul{
         background-color: rgb(1, 112, 103);
         height: 200px;
     }
     nav > ul > li > ul > li > a {
-        font-size: 14px;
+        font-size: 15px;
     }
     
     nav > ul > li > ul > li > ul  {

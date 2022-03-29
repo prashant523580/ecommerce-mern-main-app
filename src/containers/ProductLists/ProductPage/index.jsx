@@ -8,6 +8,7 @@ import { generateImgUrl } from "../../../urlConfig";
 import getParam from "../../../utils/getParam";
 
 
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 const ProductPage = (props) => {
     const dispatch = useDispatch();
     const product = useSelector(state => state.product);
@@ -52,6 +53,10 @@ const ProductPage = (props) => {
                                       <div className="product-name">{product.name}</div>
                                       <div className="product-price">Rs {product.price}</div>
                                   </div>
+                                  <div className="card-btns">
+                                                <button className="btn">add to cart</button>
+                                                <button className="btn"><FavoriteBorderIcon/></button>
+                                         </div>
                               </div>
                               </Link>
                               )

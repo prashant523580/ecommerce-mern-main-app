@@ -5,7 +5,7 @@
     /* height:50% ; */
     overflow: hidden;
     position: relative;
-
+    /* padding: .3rem 0; */
 }
 .carousel-container .carousel .inner{
     white-space: nowrap;
@@ -16,6 +16,14 @@
     justify-content: center;
     align-items: center;
     overflow-y: scroll;
+    padding: .3rem;
+}
+.paginate-nav button .slide{
+    width: 20px;
+    height: 20px;
+}
+.paginate-nav button{
+
 }
 .paginate-nav::-webkit-scrollbar{
     display: none;
@@ -23,11 +31,11 @@
 .paginate-nav button{
     margin: 0 .3vmin;
 }
-button .slide{
-    width: 40px;
-    height: 40px;
-    margin: .3rem .3rem;
-}
+/* button .slide{
+    width: 30px;
+    height: 30px;
+    margin: 0 .2rem;
+} */
 .slide{
     height: 60vh;
     display: inline-flex;
@@ -40,13 +48,13 @@ button .slide{
 
     transition: all .3s ease;
     opacity: 0;
-    /* z-index: 1; */
+    z-index: 1;
 }
 .carousel-container .carousel:hover .buttons{
     opacity: 1;
 }
-.carousel-container .buttons button{
-    padding: 30px 14px;
+.carousel-container .buttons > button{
+    padding: 20px 14px;
     position: absolute;
     outline: 0;
     border: 0;
@@ -56,8 +64,8 @@ button .slide{
     opacity: .4;
     font-size: 2.9em;
     border-radius: .4rem;
-    color: rgb(14, 14, 19);
-    background-color: rgba(116, 112, 109, 0.699);
+    color: rgb(224, 224, 242);
+    background-color: rgb(173, 161, 151);
 }
 .carousel-container .buttons button:first-child{
     left: 0;

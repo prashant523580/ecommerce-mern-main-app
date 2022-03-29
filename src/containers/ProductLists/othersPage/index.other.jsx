@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getProductBySlug } from "../../../actions";
 import { generateImgUrl } from "../../../urlConfig";
-
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 const OtherStore = (props) => {
 
     let dispatch = useDispatch();
@@ -22,7 +22,7 @@ const OtherStore = (props) => {
 
                 <div className="card">
                     <div className="card-header">
-
+                        <h2>All</h2>
                     </div>
                     <div className="card-body" >
                         {
@@ -40,6 +40,10 @@ const OtherStore = (props) => {
                                             <p><span>rating</span> <span></span></p>
                                             <p>rs{product.price}</p>
                                         </div>
+                                        <div className="card-btns">
+                                                <button className="btn">add to cart</button>
+                                                <button className="btn"><FavoriteBorderIcon/></button>
+                                         </div>
                                     </Link>
 
                                 )
@@ -49,7 +53,7 @@ const OtherStore = (props) => {
                     </div>
                 </div>
 
-                )
+                
                   
                 
             </div>

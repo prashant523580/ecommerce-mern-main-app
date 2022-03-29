@@ -9,7 +9,7 @@ self.addEventListener("install",(e) => {
         caches.open(cacheName)
         .then((cache) => {
 
-            console.log("opened cache",cache)
+            // console.log("opened cache",cache)
             return cache.addAll(urlToCache);
         }).catch((err) => console.log("installation error", err))
     )
@@ -17,7 +17,8 @@ self.addEventListener("install",(e) => {
 
 //fetch
 self.addEventListener("fetch",(e) => {
-    if (!(e.request.url.indexOf('http') === 0)) return; 
+    if (!(e.request.url.indexOf('http') === 0) || !(e.request.url.indexOf('https') === 0)  ) return; 
+    // if (!(e.request.url.indexOf('http') === 0) ) return; 
 
     e.respondWith(
         caches.match(e.request)

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { getProductBySlug } from "../../../actions";
 import { generateImgUrl } from "../../../urlConfig";
 
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import './style.css';
 const ProductStore = (props) => {
     let [priceRange, setPriceRange] = useState({
@@ -19,12 +20,12 @@ const ProductStore = (props) => {
     let products = useSelector(state => state.product);
     // let productByPrice = useSelector(state => state.productsByPrice);
     useEffect(() => {
-    const {match} = props;
-    
+        const { match } = props;
+
         dispatch(getProductBySlug(match.params.slug))
         // console.log(Object.keys(products.productsByPrice))
     }, [props]);
-   
+
     return (
         <>
             <div className="container">
@@ -37,27 +38,31 @@ const ProductStore = (props) => {
                                     <button>view all</button>
                                 </div>
                                 <div className="card-body" >
-                                        {
-                                           products.productsByPrice[key].map((product, ind) => {
-                                                return (
-                                                    
-                                                        <Link className="product-link" to={`/${product.slug}/${product._id}/p`} key={ind} className="product" >
+                                    {
+                                        products.productsByPrice[key].map((product, ind) => {
+                                            return (
 
-                                                            <div className="product-img">
-                                                             <img src={`${generateImgUrl(product.productPicture[0].img)}`} alt={product.name} />
-                                                            </div>
+                                                <Link to={`/${product.slug}/${product._id}/p`} key={ind} className="product" >
 
-                                                            <div className="product-details">
-                                                                <p> {product.name}</p>
-                                                                <p><span>rating</span> <span></span></p>
-                                                                <p>{product.price}</p>
-                                                            </div>
-                                                        </Link>
-                                                    
-                                                )
-                                            })
-                                        }
-                                   
+                                                    <div className="product-img">
+                                                        <img src={`${generateImgUrl(product.productPicture[0].img)}`} alt={product.name} />
+                                                    </div>
+
+                                                    <div className="product-details">
+                                                        <p> {product.name}</p>
+                                                        <p><span>rating</span> <span></span></p>
+                                                        <p>{product.price}</p>
+                                                    </div>
+                                                    <div className="card-btns">
+                                                <button className="btn">add to cart</button>
+                                                <button className="btn"><FavoriteBorderIcon/></button>
+                                         </div>
+                                                </Link>
+
+                                            )
+                                        })
+                                    }
+
                                 </div>
                             </div>
 

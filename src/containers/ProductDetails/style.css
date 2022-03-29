@@ -35,6 +35,7 @@ h3 {
     width: 80px;
     /* background-color: rgb(213, 217, 208); */
     overflow-y: auto;
+    overflow-x: hidden;
     height: 100%;
 }
 
@@ -79,7 +80,7 @@ h3 {
 
 .product-details-container .product-img-preview .buttons .btn {
     place-self: center;
-    padding: 1.6vmin 1.4vmin;
+    padding: 1.3vmin 1.8vmin;
     background-color: var(--warning);
     outline: 0;
     border: 0;
@@ -87,6 +88,7 @@ h3 {
     color: white;
     text-transform: capitalize;
     cursor: pointer;
+    font-size: 2.5vmin;
 }
 
 .product-details-container .product-img-preview .buttons .btn:first-child {
@@ -105,7 +107,7 @@ h3 {
 
 .product-details-container .product-description .breed ul li {
     color: rgb(118, 113, 113);
-    font-size: 2.3vmin;
+    font-size: 2.5vmin;
 }
 
 .product-details-container .product-description .breed ul li a {
@@ -245,6 +247,10 @@ h3 {
     max-width: 30vmin; */
         height: 100%;
     }
+    .product-details-container .product-img-preview .buttons .btn {
+     
+        font-size: 3.8vmin;
+    }
 
     .product-details-container .product-description {
         padding: 10px;
@@ -266,7 +272,7 @@ h3 {
 .product-details-container .product-description .product-details .available-offers .offer p,
 .product-details-container .product-description .product-details .description p {
     color: var(--dark);
-    font-size: 2.8vmin;
+    font-size: 3.5vmin;
 }
 
 .product-details-container .product-description .product-details .available-offers .offer p::before {

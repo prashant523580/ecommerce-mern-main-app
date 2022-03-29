@@ -1,6 +1,7 @@
 footer{
     margin-top: auto;
-    background: var(--bg-green);
+    /* background: var(--bg-green); */
+    background-color: var(--secondary);
     padding: 20px ;
     color: white;
     text-transform: capitalize;
