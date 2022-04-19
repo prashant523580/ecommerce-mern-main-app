@@ -62,7 +62,7 @@ const ProductCarousel = (props) =>{
         setTouchPosition(null)
     }
     return(
-        <>  <div className="carousel-container">
+        <>  <div className="product-carousel-container">
         <div className="carousel-wrapper">
             {/* You can alwas change the content of the button to other things */}
             {

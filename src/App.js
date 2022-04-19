@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+                                            // require("dotenv").config()
 import { useDispatch, useSelector } from "react-redux";
 import './App.css';
 import { getInitialData, isUserLoggedIn, updateCart } from "./actions"
@@ -13,6 +14,7 @@ import CartPage from "./containers/CartPage/index.cart";
 import CheckoutPage from "./containers/checkoutPage/index.checkout";
 import OrderPage from "./containers/orderPage/index.order";
 import OrderDetails from "./containers/orderPage/orderDetails";
+
 function App() {
   const dispatch = useDispatch()
   const auth = useSelector(state => state.auth);

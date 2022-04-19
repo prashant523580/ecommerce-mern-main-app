@@ -43,7 +43,7 @@ function HomePage(props) {
                     <div className="product">
                         <div className=" product-img">
 
-                            <img src={generateImgUrl(product.productPicture[0].img)} alt={product.productPicture[0].img} />
+                            <img src={`${generateImgUrl(product.productPicture[0].img)}`} />
                         </div>
                         <div className="product-details">
                             <div className='product-name'>{product.name}</div>
@@ -51,7 +51,7 @@ function HomePage(props) {
                         </div>
                         <div className="card-btns">
                             <button className="btn">add to cart</button>
-                            <button className="btn"><FavoriteBorderIcon/> </button>
+                            {/* <button className="btn"><FavoriteBorderIcon/> </button> */}
                         </div>
                     </div>
                 </Link>
@@ -81,19 +81,21 @@ function HomePage(props) {
     return (
         <>
             <div className="page-container">
-
-                <Carousel>
-                    <CarouselItem><img src={page[1]} alt="carousel1" /></CarouselItem>
-                    <CarouselItem><img src={page[0]} alt="carousel1" /></CarouselItem>
-                    <CarouselItem><img src={page[2]} alt="carousel1" /></CarouselItem>
-                    <CarouselItem><img src={page[5]} alt="carousel1" /></CarouselItem>
-                    <CarouselItem><img src={page[4]} alt="carousel1" /></CarouselItem>
-                    <CarouselItem><img src={page[2]} alt="carousel1" /></CarouselItem>
-                    <CarouselItem><img src={page[3]} alt="carousel1" /></CarouselItem>
-
-                </Carousel>
+                    {
+                        page &&
+                            <Carousel>
+                                <CarouselItem><img src={page[1]} alt="carousel1" /></CarouselItem>
+                                <CarouselItem><img src={page[0]} alt="carousel1" /></CarouselItem>
+                                <CarouselItem><img src={page[2]} alt="carousel1" /></CarouselItem>
+                                <CarouselItem><img src={page[5]} alt="carousel1" /></CarouselItem>
+                                <CarouselItem><img src={page[4]} alt="carousel1" /></CarouselItem>
+                                <CarouselItem><img src={page[2]} alt="carousel1" /></CarouselItem>
+                                <CarouselItem><img src={page[3]} alt="carousel1" /></CarouselItem>
+                            </Carousel>
+                            }
+                 
                 {
-                    category.length > 0 && category.map((cate, ind) => {
+                    category  && category.map((cate, ind) => {
                         return (
 
                             <Card key={ind} header={{

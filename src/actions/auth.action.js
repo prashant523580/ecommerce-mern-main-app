@@ -1,6 +1,6 @@
 // import axios from "axios"
 import axios from "../helpers/axios"
-import { authConstants, CartConstants } from "./constant"
+import { authConstants, CartConstants ,userConstants } from "./constant"
 
 export const login = (user) => {
 
@@ -43,43 +43,7 @@ export const login = (user) => {
         }
         }
     }
-export const signup = (user) => {
-// console.log(user)
-    return async (dispatch)=> {
-        dispatch({type:authConstants.LOGIN_REQUEST});
 
-        // const res = await fetch(api+"/admin/signup",{
-        //     method: "post",
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify({...user})
-        // });
-        const res = await axios.post("/signup",{
-            ...user
-        })
-        // console.log(res)
-        if(res.status === 201){
-            const {message,token} = res.data;
-            localStorage.setItem('token-',token);
-            localStorage.setItem("user-", JSON.stringify(user))
-            dispatch({
-                type: authConstants.LOGIN_SUCCESS,
-                payload:{
-                    message,
-                    user
-                }
-            });
-        }else{
-            if(res.status === 400){
-                dispatch({
-                    type:authConstants.LOGIN_FAILURE,
-                    payload:{error: res.data.error}
-                })
-            }
-        }
-    }
-}
 export const isUserLoggedIn =()=> {
     return async dispatch => {
         const token = localStorage.getItem("token-");
@@ -220,3 +184,48 @@ export const getOrderDetails = (payload) =>{
         // console.log(res)
     }
 } 
+
+
+
+
+export const userGoogleLogin = (tokenId ) => {
+
+    return async dispatch => {
+        dispatch({
+            type: authConstants.LOGIN_REQUEST
+        })
+        try{
+            let res = await axios.post("googleLogin", tokenId);
+            if(res.status === 201){
+             const {user,token} = res.data;
+             localStorage.setItem('token-',token);
+                localStorage.setItem("user-", JSON.stringify(user))
+             dispatch({
+                 type : userConstants.USER_REGISTER_SUCCESS,
+                 payload:{
+                     user,token
+                 }
+             })
+             dispatch({
+                 type : authConstants.LOGIN_SUCCESS,
+                 payload:{
+                     user,token
+                 }
+             })
+            }
+            if(res.status === 200){
+                const {user,token} = res.data;
+                localStorage.setItem('token-',token);
+                localStorage.setItem("user-", JSON.stringify(user))
+                dispatch({
+                    type : authConstants.LOGIN_SUCCESS,
+                    payload:{
+                        user,token
+                    }
+                })
+            }
+        }catch(err){
+            console.log(err)
+        }
+    }
+}

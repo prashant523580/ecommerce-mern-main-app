@@ -5,13 +5,15 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import FacebookOutlinedIcon from '@mui/icons-material/FacebookOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { getAllProduct, getCartItems, login, signout, UserSignup } from "../../actions"
+import { getAllProduct, getCartItems, login, signout, userGoogleLogin, UserSignup } from "../../actions"
 import { useDispatch, useSelector } from "react-redux";
 import {  NavLink } from 'react-router-dom';
 import { Dropdown, Modal } from './nav-header/index.nav';
 import { authConstants } from '../../actions/constant';
 import loginImg from "../../img/Login-illustration.svg";
-import googleIcon from "../../img/IOS_Google_icon.png";
+import GoogleLogin from "react-google-login";
+// import googleIcon from "../../img/IOS_Google_icon.png";
+import GoogleIcon from "../../img/googleIcon.png";
 const Header = (props) => {
     const [loginModal, setLoginModal] = useState(false);
     const [signupModal, setSignupModal] = useState(false);
@@ -41,9 +43,7 @@ const Header = (props) => {
     
     const cart = useSelector(state => state.cart);
     const dispatch = useDispatch();
-    // useEffect(() => {
-    //     dispatch(getAllProduct());
-    // },[])
+  
     useEffect(() => {
         setError(auth.error || current_user.error);
         setErrorModal(true);
@@ -68,10 +68,10 @@ const Header = (props) => {
         }, 3000);
     }, [auth.error, current_user.error]);
     useEffect(() => {
-        if(auth.authenticate === true) {
+        if(!auth.authenticate) {
              dispatch(getCartItems());
         }
-    }, []);
+    }, [auth.authenticate]);
     // console.log(auth)
     const showErrorModal = () => {
 
@@ -129,9 +129,16 @@ const Header = (props) => {
 
             setLoginModal(false);
         }
-    }, [auth.authenticate])
+    },[auth.authenticate])
     const logout = () => {
         dispatch(signout());
+    }
+    const handleGoogleLoginSuccess = (googleData ) => {
+        console.log(googleData)
+        const tokenId = {
+            tokenId : googleData.tokenId
+        }
+        dispatch(userGoogleLogin(tokenId))
     }
     const modal = () => {
         return (
@@ -164,6 +171,8 @@ const Header = (props) => {
                         </div>
                     </div>
                     {/* </div> */}
+                    <div className="loginForm">
+
                     <form action="" onSubmit={signupModal ? submitSignup : submitLogin}>
                         {
                             signupModal && <>
@@ -202,35 +211,41 @@ const Header = (props) => {
                         </div>
 
                         <div style={{ textAlign: "center", padding: "5px" }}>or</div>
-                        <hr />
-                        <div className="form-group">
-                            <div className='social-media'>
-                                <div>
-
-                                    <button >
-                                        <FacebookOutlinedIcon />
-                                    </button>
-                                    <button >
-                                        <img width={'30px'} height={"30px"} alt="icon" src={googleIcon}/>
-                                    </button>
-                                </div>
-                                <div>
-
-                                    <button>
-                                        <FacebookOutlinedIcon />
-                                    </button>
-                                    <button >
-                                        <FacebookOutlinedIcon />
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <hr />
                         <div className="form-group buttons">
                             <button className="form-btn" onClick={() => setLoginModal(false)}>cancle</button>
                             <button className="form-btn">{signupModal ? "sign up" : "login"}</button>
                         </div>
                     </form>
+                   
+                        <hr />
+                      
+                            <div className='social-media'>
+                       
+
+                                        {/* <button className='icon'> */}
+
+                                        <FacebookOutlinedIcon className='icon' />
+                                        {/* </button> */}
+                                   
+                               
+                                        <GoogleLogin
+                                            className='google-login'
+                                            clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}
+                                            buttonText="Login with Google"
+                                            onSuccess={handleGoogleLoginSuccess}
+                                            // onFailure={responseGoogle}
+                                            render={renderProps => (
+                                                <button className='goolge-icon-btn' onClick={renderProps.onClick} disabled={renderProps.disabled}><img className='icon' src={GoogleIcon}/></button>
+                                              )}
+                                            cookiePolicy={'single_host_origin'}
+                                            />
+                                    
+                                
+                         
+                            </div>
+                        </div>
+                      
+                <hr />
                 </Modal>
             </>
         )

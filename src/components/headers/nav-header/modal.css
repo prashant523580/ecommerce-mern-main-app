@@ -139,7 +139,7 @@
 }
 
 .modal form {
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   /* margin: auto; */
@@ -149,7 +149,9 @@
   border-radius: .3rem;
   /* box-shadow: 0 10px 50px 20px rgba(0, 0, 0, 0.579); */
 }
-
+.loginForm{
+  width: 50%;
+}
 .form-group {
   /* display: grid; */
 }
@@ -165,27 +167,33 @@
   border-radius: 10px;
   padding: 10px;
 }
-.form-group .social-media{
-  /* place-self: center; */
+.social-media{
+display: flex;
+justify-content: space-around;
+align-items: center;
 }
-.form-group .social-media div{
-  display: flex;
+
+.google-login{
 }
-form > .form-group .social-media  div  button {
-  padding: .1vmin;
-  margin:  2px;
-  width: 50%;
-  text-transform: capitalize;
-  border-radius: .3rem;
-  /* background-color: inherit; */
-  color: rgb(23, 83, 120);
-  /* background-color: black; */
+.google-icon-btn{
+  background-color: #f68754;
+
+  overflow: hidden;
 }
-form > .form-group .social-media div button svg,
+.social-media  .icon{
+  width: 8vmin;
+  height: 8vmin;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.social-media .icon:hover{
+  box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.329);
+}
+/* form > .form-group .social-media div button svg,
 form > .form-group .social-media div button img{
   width: 5vmin;
   height: 5vmin;
-}
+} */
 .close {
   color: rgb(7, 0, 0);
   cursor: pointer;

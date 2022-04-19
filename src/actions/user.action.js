@@ -20,8 +20,8 @@ export const UserSignup = (user) => {
             });
             if(res.status === 201){
                 const {message,token,user} = res.data;
-                localStorage.setItem('token',token);
-                localStorage.setItem("user", JSON.stringify(user))
+                localStorage.setItem('token-',token);
+                localStorage.setItem("user-", JSON.stringify(user))
                 dispatch({
                     type: userConstants.USER_REGISTER_SUCCESS,
                     payload:{
