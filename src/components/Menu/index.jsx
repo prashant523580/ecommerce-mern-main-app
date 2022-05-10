@@ -10,7 +10,6 @@ function Menu(props) {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getAllCategory());
-        // dispatch(getAllProduct());
         // dispatch(getInitialData());  
       },[]);
     const category = useSelector(state => state.category)

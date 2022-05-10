@@ -13,12 +13,11 @@ const ProductCarousel = (props) =>{
     useEffect(() => {
         function resizeWindow(){
             let clientX = window.pageXOffset;
-            console.log(clientX)
-            console.log(window.innerWidth)
+            // console.log(clientX)
+            // console.log(window.innerWidth)
         }
         window.addEventListener("resize",resizeWindow)
     })
-    console.log("hello")
     // Set the length to match current children from props
     useEffect(() => {
         setLength(children.length)

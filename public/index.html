@@ -19,8 +19,8 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <a href="
-    https://example.com/stuff"></a>
+    <!-- <a href="
+    https://example.com/stuff"></a> -->
   </body>
 
   <script>
@@ -33,9 +33,9 @@
         }).catch((err) => {
           console.log("serviceWorker REgistration failed", err)
         });
-        // navigator.serviceWorker.ready.then(function(swRegistration){
-        //   return swRegistration.sync.register('bgSync');
-        // })
+        navigator.serviceWorker.ready.then(function(swRegistration){
+          return swRegistration.sync.register('bgSync');
+        })
       });
     }
   </script>

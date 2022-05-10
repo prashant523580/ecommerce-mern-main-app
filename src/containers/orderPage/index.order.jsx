@@ -22,38 +22,26 @@ const OrderPage = (props) => {
         <>
             <div className="page-container">
                 <div className="row orders">
+                  
+                       {
 
-                    {order.map((ord, ind) =>
-                        <Card
+                            order.length > 0 && order.map((ord, ind) =>
+                            <Card
                             key={ind}
                             header={
                                 {
-
+                                    
                                     leftHeader: `Payment status:${ord.paymentStatus}`,
                                     rightHeader: `order ID:${ord._id}`
                                 }
                             }
                         >
                             {
-
-                           ord.items.map((item, ind) => {
-                               console.log(item)
+                                
+                                ord.items.map((item, ind) => {
+                                    
                                     return (
-                                        // <NavLink key={ind} title="click to view order details" to={`/orderDetails/${ord._id}`}>
-                                        //     <div className="img-container">
-                                        //         <img src={generateImgUrl(item.productId.productPicture[0].img)} alt={item.productId.name} />
-                                        //     </div>
-                                        //     <div className="order-details">
-
-                                        //         <div className="product-name"> <p>
-                                        //             {item.productId.name.split(" ", 3)}
-                                        //         </p>
-
-                                        //         </div>
-                                        //         <div className="product-price">price {item.payablePrice}</div>
-                                        //     </div>
-                                        // </NavLink>
-                                        <Link key={ind} title="click to view order details" to={`/orderDetails/${ord._id}`}>
+                                       <Link key={ind} title="click to view order details" to={`/orderDetails/${ord._id}`}>
 
                                         <div className="product">
                                         <div className=" product-img">
@@ -71,7 +59,8 @@ const OrderPage = (props) => {
                                 )
                             }
                         </Card>
-                    )}
+                    )
+                }
                 </div>
                 <div className="row">
 

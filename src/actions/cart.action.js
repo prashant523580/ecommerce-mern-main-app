@@ -46,7 +46,7 @@ export const addToCart = (product,newQnty =1) => {
         cartItems[product._id] = {
             ...product,qty,
         }
-       if(auth.authenticate){
+       if(!auth.authenticate){
             dispatch({
                 type: CartConstants.ADD_TO_CART_REQUEST
             })

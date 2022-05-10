@@ -11,45 +11,92 @@ self.addEventListener("install",(e) => {
 
             console.log("opened cache",cache)
             return cache.addAll(urlToCache);
-        }).catch((err) => console.log("installation error", err))
+        })
+        .then(self.skipWaiting())
+        .catch((err) => console.log("installation error", err))
     )
 })
 
-//fetch
-self.addEventListener("fetch",(e) => {
-    // if (!(e.request.url.indexOf('http') === 0)) return; 
-    // if (!(e.request.url.indexOf('http') === 0) ) return; 
 
-    e.respondWith(
-        caches.match(e.request)
-        .then((res) => {
-            if(res){
-                return res
-            }
-                return res || fetch(e.request)
-                .then((res) => {
-                    //check if we recieved a valid response
-                    if(!res || res.status !== 200 || res.type !== "basic"){
-                        return res
-                    }
-                    //important: clone  the response . a response is a stream
-                    //and because  we want the browser to consume the response
-                    //as well as the  cache  consuming the response we need 
-                    //to clone it  so we have two stream
-                    var resToCache =  res.clone();
-                    caches.open(cacheName)
-                    .then((cache) => {
-                        cache.put(e.request.url, resToCache);
-                        return res
+// self.addEventListener("activate",(e) => {
+//     console.log("activate",e)
+//     const cacheLists = [];
+//     cacheLists.push(cacheName);
+//     e.waitUntil(
+//         caches.keys()
+//         .then((cacheNames) =>
+//             {
+//                 return cacheNames.filter((cacheName ) => !cacheLists.includes(cacheName))
+//             })
+//         .then(cacheToDelete => {
+//             return Promise.all(cacheToDelete.map(deleteCache => {
+//                 return caches.delete(cacheToDelete)
+//             }))
+//         })
+//         .then(() => self.clients.claim())
+//     )
+// })
+
+self.addEventListener("fetch",(e) =>{
+    if(e.request.url.startsWith(self.location.origin)){
+            e.respondWith(
+                caches.match(e.request).then(cachedResponse =>{
+                    if(cachedResponse) return cachedResponse
+                    return caches.open(urlToCache)
+                    .then(cache =>{
+                        return fetch(e.request)
+                        .then(response => {
+
+                            return cache.put(e.request, response.clone())
+                            .then(() => {
+                                return response;
+                            })
+                        })
                     })
                 })
-                .catch(() => caches.match("offline.html"))
-        })
-    )
+                
+            )
+    }    
 })
 
+
+
+
+
+//fetch
+// self.addEventListener("fetch",(e) => {
+//     if (!(e.request.url.indexOf('http') === 0)) return; 
+
+//     e.respondWith(
+//         caches.match(e.request)
+//         .then((res) => {
+//             if(res){
+//                 return res
+//             }
+//                 return fetch(e.request)
+//                 .then((res) => {
+//                     if(!res || res.status !== 200 || res.type !== "basic"){
+//                         return res
+//                     }
+   
+//                     // var resToCache =  res.clone();
+//                       caches.open(cacheName)
+//                     .then((cache) => {
+//                        return cache.put(e.request.url, res.clone()
+//                          .then(() => {
+//                              return res
+
+//                          })    
+//                         );
+//                     })
+//                 })
+//                 .catch(() => caches.match("offline.html"))
+//         })
+//     )
+// })
+
 self.addEventListener("activate",(e) => {
-    console.log("activate",e)
+
     const cacheLists = [];
     cacheLists.push(cacheName);
     e.waitUntil(
@@ -64,6 +111,7 @@ self.addEventListener("activate",(e) => {
     )
 })
 
+
 self.addEventListener("sync",(e) => {
     console.log(e)
     if(e.tag == "bgSync"){
@@ -72,45 +120,3 @@ self.addEventListener("sync",(e) => {
         )
     }
 })
-
-
-
-
-// fetch event
-// self.addEventListener('fetch', evt => {
-    // check if request is made by chrome extensions or web page
-    // if request is made for web page url must contains http.
-    // if (!(evt.request.url.indexOf('http') === 0)) return; 
-    // skip the request. if request is not made with http protocol
-  
-//     evt.respondWith(
-//       caches
-//         .match(evt.request)
-//         .then(
-//           cacheRes =>
-//             cacheRes ||
-//             fetch(evt.request).then(fetchRes =>
-//               caches.open(dynamicNames).then(cache => {
-//                 cache.put(evt.request.url, fetchRes.clone());
-//                 // check cached items size
-//                 limitCacheSize(dynamicNames, 75);
-//                 return fetchRes;
-//               })
-//             )
-//         )
-//         .catch(() => caches.match('/fallback'))
-//     );
-//   });
-  
-//   // cache size limit function
-//   const limitCacheSize = (name, size) => {
-//     caches.open(cacheName).then(cache => {
-//       cache.keys().then(keys => {
-//         if (keys.length > size) {
-//           cache.delete(keys[0]).then(limitCacheSize(name, size));
-//         }
-//       });
-//     });
-//   };
-  
-  

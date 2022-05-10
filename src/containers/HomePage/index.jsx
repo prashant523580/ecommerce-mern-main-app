@@ -42,16 +42,15 @@ function HomePage(props) {
                 <Link to={`/${product.slug}/${product._id}/p`} key={ind} >
                     <div className="product">
                         <div className=" product-img">
-
-                            <img src={`${generateImgUrl(product.productPicture[0].img)}`} />
+                            <img src={`${generateImgUrl(product.productPicture[0].img)}`} alt={product.productPicture[0].img    }/>
                         </div>
                         <div className="product-details">
                             <div className='product-name'>{product.name}</div>
                             <div className='product-price'>Rs.{product.price}</div>
                         </div>
                         <div className="card-btns">
-                            <button className="btn">add to cart</button>
-                            {/* <button className="btn"><FavoriteBorderIcon/> </button> */}
+                            {/* <button className="btn"> add to cart </button> */}
+                            {/* <button className="btn"> <FavoriteBorderIcon/> </button> */}
                         </div>
                     </div>
                 </Link>
@@ -82,16 +81,16 @@ function HomePage(props) {
         <>
             <div className="page-container">
                     {
-                        page &&
-                            <Carousel>
-                                <CarouselItem><img src={page[1]} alt="carousel1" /></CarouselItem>
-                                <CarouselItem><img src={page[0]} alt="carousel1" /></CarouselItem>
-                                <CarouselItem><img src={page[2]} alt="carousel1" /></CarouselItem>
-                                <CarouselItem><img src={page[5]} alt="carousel1" /></CarouselItem>
-                                <CarouselItem><img src={page[4]} alt="carousel1" /></CarouselItem>
-                                <CarouselItem><img src={page[2]} alt="carousel1" /></CarouselItem>
-                                <CarouselItem><img src={page[3]} alt="carousel1" /></CarouselItem>
-                            </Carousel>
+                         
+                            // <Carousel>
+                            //     <CarouselItem><img src={page[1]} alt="carousel1" /></CarouselItem>
+                            //     <CarouselItem><img src={page[0]} alt="carousel1" /></CarouselItem>
+                            //     <CarouselItem><img src={page[2]} alt="carousel1" /></CarouselItem>
+                            //     <CarouselItem><img src={page[5]} alt="carousel1" /></CarouselItem>
+                            //     <CarouselItem><img src={page[4]} alt="carousel1" /></CarouselItem>
+                            //     <CarouselItem><img src={page[2]} alt="carousel1" /></CarouselItem>
+                            //     <CarouselItem><img src={page[3]} alt="carousel1" /></CarouselItem>
+                            // </Carousel>
                             }
                  
                 {

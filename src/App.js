@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
                                             // require("dotenv").config()
 import { useDispatch, useSelector } from "react-redux";
 import './App.css';
-import { getInitialData, isUserLoggedIn, updateCart } from "./actions"
+import { getInitialData, isUserLoggedIn, updateCart,getAllProduct } from "./actions"
 import HomePage from "./containers/HomePage/index";
 import Header from "./components/headers/index";
 import Menu from "./components/Menu/index";
@@ -27,10 +27,11 @@ function App() {
   useEffect(() => {
     if(!auth.authenticate){
       dispatch(updateCart());
+      dispatch(getInitialData())
     }
   },[auth.authenticate])
   useEffect(() => {
-    // dispatch(getInitialData())
+    dispatch(getAllProduct())
   },[])
   return (
     <>
