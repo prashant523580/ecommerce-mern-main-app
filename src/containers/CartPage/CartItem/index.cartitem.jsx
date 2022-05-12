@@ -23,7 +23,7 @@ const CartItem = (props) => {
                     <img src={generateImgUrl(img)} alt="image"/>
                 </div>
                 <div className="cart-details">
-                    <div>
+                    <div className="desc">
                         <h4>{name.split(" ",3)}</h4>
                         <p>Rs.{price}</p>
                     </div>

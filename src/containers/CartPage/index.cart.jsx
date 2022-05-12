@@ -96,11 +96,13 @@ const CartPage = (props) => {
                     }
                   
                     </div>
+		{ Object.keys(cartItems).length > 0 &&
                     <div className="cart-footer">
                         <button onClick={() => 
                             props.history.push('/checkout')
                         } className='btn btn-warning'>order now</button>
                     </div>
+		}
                 </div>
                 <div className="cart-item right">
                     <div className="cart-quantity cart-header">
