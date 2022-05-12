@@ -11,5 +11,5 @@ export const generateImgUrl = (image) => {
 
 // export const api = "http://localhost:4343/api";
 // export const generateImgUrl = (image) => {
-     return `http://localhost:4343/public/${image}`;
- }
+//     return `http://localhost:4343/public/${image}`;
+ //}
