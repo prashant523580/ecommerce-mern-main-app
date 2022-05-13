@@ -61,8 +61,8 @@ function Menu(props) {
 
             <nav className="nav">
             <button className='menu-btn' onClick={toggleNav}><MenuIcon/></button>
-            <ul style={{width:` ${window.innerWidth < 680 ? navWidth +'px' : ''}`}}>
-            <span className='close' onClick={() => setNavWidth(0)}><CloseIcon/></span>
+            <ul>
+        
                {category.categories.length > 0 ? renderCategory(category.categories) : null} 
             </ul>
         </nav>

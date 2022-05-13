@@ -9,7 +9,7 @@
   --warning: rgb(202, 70, 8);
   --success: rgb(8, 116, 100);
   --alert: red;
-  --light: white;
+  --light: rgba(225,225,225,1);
   --dark: rgb(19, 14, 14);
   --info: lightblue;
   --danger: rgb(135, 3, 3);

@@ -155,22 +155,10 @@ const Header = (props) => {
                             </div>
                         </div>
                         <div className="content-body">
-                            <img src={loginImg} />
+                           {/* <img src={loginImg} />*/}
                         </div>
-                        <div className="link-form">
-                            {signupModal ? <>
-                                <p >already signup ? <span onClick={() => {
-                                    setSignupModal(false)
-
-                                }}> signin here.</span>  </p>
-
-                            </>
-                                : <p
-                                > not a member ? <span onClick={() => {
-                                    setSignupModal(true)
-                                }}> signup here.</span></p>}
-                        </div>
-                    </div>
+                       
+                  
                     {/* </div> */}
                     <div className="loginForm">
 
@@ -211,14 +199,14 @@ const Header = (props) => {
                                 <input autoComplete='false' name='password' value={user.password} onChange={InputEvent} type="password" placeholder='password' className='input-control' />
                             </div>
 
-                            <div style={{ textAlign: "center", padding: "5px" }}>or</div>
                             <div className="form-group buttons">
                                 <button className="form-btn" onClick={() => setLoginModal(false)}>cancle</button>
                                 <button className="form-btn">{signupModal ? "sign up" : "login"}</button>
                             </div>
                         </form>
-
-                        <hr />
+		 <div style={{ textAlign: "center", padding: "5px" }}>or</div>
+                           
+                        
 
                         <div className='social-media'>
 
@@ -244,8 +232,22 @@ const Header = (props) => {
 
 
                         </div>
-                    </div>
+			<hr/>
+			 <div className="link-form">
+                            {signupModal ? <>
+                                <p >already signup ? <span onClick={() => {
+                                    setSignupModal(false)
 
+                                }}> signin here.</span>  </p>
+
+                            </>
+                                : <p
+                                > not a member ? <span onClick={() => {
+                                    setSignupModal(true)
+                                }}> signup here.</span></p>}
+                        </div>
+                    </div>
+		</div>
                     <hr />
                 </Modal>
             </>

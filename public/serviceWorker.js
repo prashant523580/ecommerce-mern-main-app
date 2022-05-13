@@ -100,7 +100,7 @@ self.addEventListener("activate",(e) => {
     const cacheLists = [];
     cacheLists.push(cacheName);
     e.waitUntil(
-        caches.keys()
+        caches.keys(cacheName)
         .then((cacheNames) =>  Promise.all(
             cacheNames.map((cacheName) => {
                 if(!cacheLists.includes(cacheName)){

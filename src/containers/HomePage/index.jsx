@@ -18,9 +18,8 @@ function HomePage(props) {
     useEffect(() => {
         dispatch(getAllProduct());
     }, []);
+  
 
-
-    
 
     const productCategory = (category) => {
 
@@ -78,7 +77,7 @@ function HomePage(props) {
     // }
 
     return (
-        <>
+        <>   
             <div className="page-container">
                     {
                          
@@ -92,6 +91,9 @@ function HomePage(props) {
                             //     <CarouselItem><img src={page[3]} alt="carousel1" /></CarouselItem>
                             // </Carousel>
                             }
+			<div className="category-container">
+
+			</div>
                  
                 {
                     category  && category.map((cate, ind) => {
@@ -114,6 +116,35 @@ function HomePage(props) {
                         )
                     })
                 }
+		{
+			<Card
+			header={{leftHeader :"Products For You"}}
+				> 
+				{
+
+				  products.map((product,ind) => {
+
+				return(
+					<Link to={`/${product.slug}/${product._id}/p`} key={ind} >
+                    <div className="product">
+                        <div className="product-img">
+                            <img src={`${generateImgUrl(product.productPicture[0].img)}`} alt={product.name}/>
+                        </div>
+                        <div className="product-details">
+                            <div className='product-name'>{product.name}</div>
+                            <div className='product-price'>Rs.{product.price}</div>
+                        </div>
+                        <div className="card-btns">
+                            {/* <button className="btn"> add to cart </button> */}
+                            {/* <button className="btn"> <FavoriteBorderIcon/> </button> */}
+                        </div>
+                    </div>
+                </Link>
+				)
+				})
+				}				
+			</Card>
+		}
             </div>
         </>
     )

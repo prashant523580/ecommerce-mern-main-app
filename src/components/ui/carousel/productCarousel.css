@@ -38,7 +38,7 @@
 .carousel-content  a:hover{
     /* box-shadow: -1px 1px  20px 0 rgba(0, 0, 0, 0.892);  */
     /* animation: spin 1s linear infinite alternate; */
-    z-index: 2;
+    
 }
 .carousel-content .product{
     box-shadow:  none;

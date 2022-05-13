@@ -43,7 +43,7 @@
     display: flex;
     scroll-width: none;
 }
-.page-container .row.orders .card .card-bod::-webkit-scrollbar{
+.page-container .row.orders .card .card-body::-webkit-scrollbar{
  display:none;
 }
 .page-container .row a .order-details{

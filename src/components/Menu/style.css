@@ -26,26 +26,33 @@
 nav{
     /* background-color: var(--bg-green); */
     background-color: var(--secondary);
-    z-index: 999;
+    position: sticky;
+    top: 0;
+    z-index:99999;
+  
+   
 }
-nav  ul{
+nav   ul{
     list-style: none;
-
+}
+nav > ul::-webkit-scrollbar{
+    display: none;
 }
 nav > ul{
     position: relative;
     display: flex;
     color: white;
+    scrollbar-width: none;
 }
 nav > ul > li {
     cursor: pointer;
-
+    float: left;
 }
 nav ul > li > div {
-    display: block;
-    margin: .5vmin;
+    white-space: nowrap;
+    margin: 0 .3rem;
     padding: 6px 8px;
-    font-size: 3vmin;
+   
 }
 nav > ul > li:hover{
     background: rgb(248, 248, 248);
@@ -57,25 +64,29 @@ nav > ul > li > ul{
     right: 0;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.425);
     display: none;
+    height:0;
     background:var(--light);
     background: linear-gradient(rgb(255, 255, 255),rgb(248, 248, 248),rgb(246, 246, 248)) 1%;
-    padding: .8vmin .3vmin;
+    padding: .9rem .3rem;
+    z-index: 9999;
+    transition: height .3s ease;
 }
 nav > ul > li:hover ul{
     display: block;
+    height: 300px;
 }
 nav > ul > li > ul > li{
-    margin: 0 2vmin;
-    float: left;
+    margin: 0 0rem;
+/*    float: left;*/
 }
-nav > ul > li > ul > li{
+nav l> ul > li > ul > li{
 }
 nav > ul > li > ul > li > a {
     font-weight: bold;
     text-decoration: none;
     text-transform: capitalize;
     color:var(--primary);
-    font-size: 3.2vmin;
+    
 }
 
 nav > ul > li > ul > li > ul >li {
@@ -92,7 +103,7 @@ nav > ul > li > ul > li > ul >li  a{
     display: inline-flex;
     text-align: center;
     transition: left ease .3s linear;
-    font-size: 2.8vmin;
+    
 }
 
 nav > ul > li > ul > li > ul >li  a:hover{
@@ -118,7 +129,7 @@ nav ul > li > ul > li  >ul  li:hover a{
     /* left: 20px; */
     transform: translateX(10px);
 }   
-
+/*
 @media screen and (max-width:680px) {
     .close{
         display: block;
@@ -160,13 +171,8 @@ nav ul > li > ul > li  >ul  li:hover a{
         
     } 
     nav > ul > li > ul{
-        /* position: fixed;
-        top: 0; */
-        /* width: 300px; */
-        /* background-color: rgb(2, 110, 101); */
-        display: none;
         flex-direction: column;
-        /* height: 100vh; */
+        
     }
     nav > ul > li:hover > ul{
         display: flex;
@@ -174,9 +180,7 @@ nav ul > li > ul > li  >ul  li:hover a{
     nav > ul > li > ul > li{
     }
     nav > ul > li > ul > li > ul {
-        /* display: none;
-        height: 0;
-        overflow: hidden; */
+        
     }
     nav .dropdown-btn{
         color: rgb(105, 101, 101);
@@ -215,3 +219,4 @@ nav  .dropdown-btn:hover ~ nav > ul > li > ul > li > ul{
     nav ul > li > ul > li  >ul  li:hover a{
     }  
 }
+*/
