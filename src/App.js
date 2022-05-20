@@ -27,8 +27,9 @@ function App() {
   useEffect(() => {
     if(!auth.authenticate){
       dispatch(updateCart());
-      dispatch(getInitialData())
     }
+      dispatch(getInitialData())
+
   },[auth.authenticate])
   useEffect(() => {
     dispatch(getAllProduct())

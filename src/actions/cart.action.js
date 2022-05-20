@@ -1,4 +1,3 @@
-
 import axios from "../helpers/axios"
 import store from "../store/index"
 import { CartConstants } from "./constant";
@@ -56,8 +55,6 @@ export const addToCart = (product,newQnty =1) => {
                     {
                         product: product._id,
                         quantity: qty,
-                        
-                        
                     }
                 ]
                 

@@ -242,8 +242,6 @@ form .form-group .input-control:focus {
   margin: 0 .2rem;
   /* place-self: center; */
   border: 0;
-  
-  
   cursor: pointer;
 }
 

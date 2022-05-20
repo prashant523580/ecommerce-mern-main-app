@@ -10,16 +10,14 @@ export const login = (user) => {
             dispatch({type:authConstants.LOGIN_REQUEST});
             
             const res= await axios.post("/signin",{...user});
-            console.log(res)
             if(res.status === 200){
                 const {user,token} = await res.data;
-                console.log(user)
+                //console.log(user)
                 localStorage.setItem('token-',token);
                 localStorage.setItem("user-", JSON.stringify(user))
                 dispatch({
                     type: authConstants.LOGIN_SUCCESS,
                     payload:{
-                        
                         token,
                         user
                     }
@@ -33,7 +31,7 @@ export const login = (user) => {
                 }
             }
         }catch(err){
-            console.log(err.response)
+           // console.log(err.response)
             if(err.response.status === 422){
                 dispatch({
                     type:authConstants.LOGIN_FAILURE,
@@ -94,7 +92,7 @@ export const addAddress = (payload) => {
                 let res = await axios.post("/user/address/create", {payload});
                 if(res.status === 201){
                     const {address} = res.data.address;
-                    console.log(address)
+                  //  console.log(address)
                     dispatch({
                         type: authConstants.ADD_ADDRESS_SUCCESS,
                         payload:{address}
@@ -133,7 +131,7 @@ export const addOrder = (payload) => {
     return async dispatch => {
         dispatch({type:authConstants.ADD_ORDER_REQUEST});
         const res = await axios.post("/user/addOrder",payload);
-        console.log(res)
+       // console.log(res)
         if(res.status === 201){
             const {order} = res.data;
             dispatch({
